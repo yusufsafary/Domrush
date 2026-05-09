@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DomRush – AI Domain Name Finder</title>
+<meta name="description" content="Find the perfect domain name for your product using AI. DomRush generates creative, brandable domains instantly."/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;--white:#ffffff;
+  --g50:#f8f8f6;--g100:#f0f0ed;--g200:#e2e2dd;--g300:#c8c8c2;--g400:#9e9e96;--g500:#6e6e66;--g700:#3a3a36;--g800:#222220;
+  --gold:#c9a84c;--gold-light:#f5e8c5;--gold-dark:#8a6f2e;
+  --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:24px;--r-2xl:32px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--black);min-height:100vh;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--g100);
+  padding:0 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:54px;
+}
+.logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;letter-spacing:-0.02em;font-style:italic;display:flex;align-items:center;gap:6px}
+.logo-dot{width:8px;height:8px;border-radius:50%;background:var(--black);display:inline-block}
+.nav-right{display:flex;align-items:center;gap:10px}
+.btn-login{
+  font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:500;
+  padding:7px 14px;border-radius:999px;
+  border:1px solid var(--g200);
+  background:var(--white);color:var(--black);
+  cursor:pointer;transition:all 0.15s;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
+.btn-login:hover{border-color:var(--black)}
+.btn-login svg{width:14px;height:14px;flex-shrink:0}
+.user-avatar{
+  width:30px;height:30px;border-radius:50%;
+  object-fit:cover;border:1.5px solid var(--g200);
+  cursor:pointer;
+}
+.user-pill{
+  display:flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:500;color:var(--g700);
+  cursor:pointer;
+}
+.premium-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--black);color:var(--white);
+  padding:2px 7px;border-radius:999px;
+}
+.free-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  background:var(--g100);color:var(--g500);
+  padding:2px 7px;border-radius:999px;
+}
+
+/* ── HERO ── */
+.hero{padding:3rem 1.25rem 1.5rem;text-align:center;max-width:680px;margin:0 auto}
+.hero-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--g500);margin-bottom:1.25rem;
+}
+.chip-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{
+  font-family:'Fraunces',serif;font-size:clamp(1.9rem,7vw,3.2rem);font-variation-settings:'opsz' 72;
+  font-weight:300;line-height:1.05;letter-spacing:-0.025em;margin-bottom:1rem;
+}
+.hero h1 .italic{font-style:italic;font-weight:300;font-variation-settings:"opsz" 72}
+.hero p{font-size:0.9375rem;color:var(--g500);line-height:1.7;max-width:420px;margin:0 auto 1.5rem}
+
+/* free uses counter */
+.uses-bar{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--g50);border:1px solid var(--g200);
+  border-radius:999px;padding:5px 14px;
+  font-size:12px;color:var(--g500);margin-bottom:2rem;
+}
+.uses-bar strong{color:var(--black);font-weight:600}
+
+/* ── EXAMPLES STRIP ── */
+.examples-section{max-width:680px;margin:0 auto 0.5rem;padding:0 1.25rem}
+.examples-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--g400);margin-bottom:0.6rem}
+.examples-scroll{
+  display:flex;gap:0.5rem;
+  overflow-x:auto;padding-bottom:4px;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.examples-scroll::-webkit-scrollbar{display:none}
+.example-chip{
+  flex-shrink:0;
+  font-size:12px;font-weight:500;
+  padding:6px 14px;border-radius:999px;
+  border:1px solid var(--g200);
+  background:var(--white);color:var(--g700);
+  cursor:pointer;transition:all 0.15s;
+  white-space:nowrap;
+}
+.example-chip:hover{border-color:var(--black);color:var(--black)}
+
+/* ── SEARCH CARD ── */
+.search-card{
+  background:var(--g50);border:1px solid var(--g100);
+  border-radius:var(--r-2xl);padding:1.25rem;
+  max-width:680px;margin:0.75rem auto 1.5rem;
+}
+.field-label{
+  display:block;font-size:10px;font-weight:600;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--g400);margin-bottom:0.4rem;
+}
+textarea,input[type="text"]{
+  width:100%;font-family:'Instrument Sans',sans-serif;font-size:0.9rem;
+  background:var(--white);border:1px solid var(--g200);
+  border-radius:var(--r-md);padding:0.7rem 0.9rem;
+  color:var(--black);resize:none;transition:border-color 0.15s;
+  outline:none;line-height:1.55;
+}
+textarea:focus,input[type="text"]:focus{border-color:var(--black)}
+textarea{min-height:72px}
+
+.options-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.875rem}
+.field-group{margin-bottom:0.875rem}
+.pill-group{display:flex;flex-wrap:wrap;gap:0.35rem}
+.pill{
+  font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:999px;
+  border:1px solid var(--g200);background:var(--white);color:var(--g700);
+  cursor:pointer;transition:all 0.15s;user-select:none;
+}
+.pill:hover{border-color:var(--black);color:var(--black)}
+.pill.active{background:var(--black);color:var(--white);border-color:var(--black)}
+
+/* premium options row */
+.premium-row{
+  background:linear-gradient(135deg,#fefce8,#fef3c7);
+  border:1px solid #fcd34d;border-radius:var(--r-md);
+  padding:0.75rem 1rem;margin-bottom:0.875rem;
+  display:flex;align-items:flex-start;gap:0.75rem;
+}
+.premium-row .lock-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+.premium-row .pr-text{flex:1}
+.premium-row .pr-title{font-size:12px;font-weight:600;color:var(--gold-dark);margin-bottom:2px}
+.premium-row .pr-desc{font-size:11px;color:#92400e;line-height:1.4}
+.btn-upgrade{
+  font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;
+  background:var(--black);color:var(--white);border:none;cursor:pointer;
+  flex-shrink:0;margin-top:2px;transition:opacity 0.15s;
+}
+.btn-upgrade:hover{opacity:0.8}
+
+/* generate button */
+.btn-generate{
+  width:100%;background:var(--black);color:var(--white);
+  border:none;border-radius:var(--r-md);
+  padding:0.8rem 1.5rem;
+  font-family:'Instrument Sans',sans-serif;font-size:0.9375rem;font-weight:600;letter-spacing:0.01em;
+  cursor:pointer;transition:opacity 0.15s,transform 0.1s;
+  letter-spacing:0.01em;
+}
+.btn-generate:hover{opacity:0.85}
+.btn-generate:active{transform:scale(0.99)}
+.btn-generate:disabled{opacity:0.35;cursor:not-allowed;transform:none}
+
+/* ── RESULTS ── */
+.results-wrap{max-width:680px;margin:0 auto;padding:0 1.25rem 5rem}
+.results-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:0.875rem;
+}
+.results-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400)}
+.count-pill{background:var(--black);color:var(--white);font-size:10px;padding:2px 9px;border-radius:999px}
+
+.domain-list{display:flex;flex-direction:column;gap:0.5rem}
+.domain-card{
+  background:var(--white);border:1px solid var(--g100);
+  border-radius:var(--r-lg);padding:0.875rem 1rem;
+  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
+  transition:border-color 0.15s,box-shadow 0.15s;
+  animation:slideUp 0.3s ease both;
+}
+.domain-card:hover{border-color:var(--g300);box-shadow:0 2px 16px rgba(0,0,0,0.05)}
+.domain-card.blurred .domain-name{filter:blur(5px);user-select:none}
+.domain-card.blurred .domain-why{filter:blur(3px);user-select:none}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.dc-left{flex:1;min-width:0}
+.domain-name{
+  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;font-style:italic;
+  letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.domain-name .ext{color:var(--g400);font-weight:500}
+.domain-why{font-size:12px;color:var(--g500);margin-top:3px;line-height:1.5}
+.domain-badges{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;align-items:center}
+.badge{
+  font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  padding:2px 8px;border-radius:999px;border:1px solid;
+}
+.b-tld{border-color:var(--g200);color:var(--g500)}
+.b-short{border-color:#86efac;color:#166534;background:#f0fdf4}
+.b-creative{border-color:#c4b5fd;color:#5b21b6;background:#f5f3ff}
+.b-hot{border-color:#fca5a5;color:#991b1b;background:#fef2f2}
+.b-premium{border-color:var(--gold);color:var(--gold-dark);background:var(--gold-light)}
+
+.dc-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
+.btn-check{
+  font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:600;
+  padding:5px 12px;border-radius:var(--r-sm);
+  border:1px solid var(--black);background:transparent;color:var(--black);
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+}
+.btn-check:hover{background:var(--black);color:var(--white)}
+.lock-btn{
+  font-size:10px;font-weight:600;color:var(--g400);
+  border:1px solid var(--g200);background:var(--g50);
+  padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;
+  white-space:nowrap;transition:all 0.15s;
+}
+.lock-btn:hover{border-color:var(--gold);color:var(--gold-dark)}
+
+/* skeleton */
+.skeleton-list{display:flex;flex-direction:column;gap:0.5rem}
+.skel-card{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r-lg);padding:0.875rem 1rem;animation:pulse 1.5s ease infinite}
+.skel-line{height:13px;background:var(--g100);border-radius:4px;margin-bottom:7px}
+.sl-wide{width:55%}.sl-narrow{width:38%;height:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+
+/* empty */
+.empty{text-align:center;padding:3rem 1rem;color:var(--g400);font-size:0.875rem}
+
+/* ── PREMIUM MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:500;
+  display:flex;align-items:flex-end;justify-content:center;
+  animation:fadeIn 0.2s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-overlay.hidden{display:none}
+.modal{
+  background:var(--white);border-radius:var(--r-2xl) var(--r-2xl) 0 0;
+  padding:2rem 1.5rem 2.5rem;width:100%;max-width:480px;
+  animation:slideUp2 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+@keyframes slideUp2{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.modal-close{
+  position:absolute;right:1.25rem;top:1.25rem;
+  width:28px;height:28px;border-radius:50%;
+  background:var(--g100);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;color:var(--g500);
+}
+.modal-close:hover{background:var(--g200)}
+.modal-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;margin-bottom:0.25rem}
+.modal-sub{font-size:13px;color:var(--g500);margin-bottom:1.5rem;line-height:1.5}
+.plan-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.75rem}
+.plan-feature .checkmark{width:18px;height:18px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.plan-feature .checkmark svg{width:10px;height:10px;stroke:white;stroke-width:3;fill:none}
+.plan-feature p{font-size:13px;color:var(--g700);line-height:1.4}
+.plan-feature p strong{color:var(--black);font-weight:600}
+.modal-divider{border:none;border-top:1px solid var(--g100);margin:1.25rem 0}
+.btn-google-signin{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--white);color:var(--black);
+  border:1.5px solid var(--g200);border-radius:var(--r-md);
+  padding:0.8rem 1rem;font-size:0.9rem;font-weight:500;
+  cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;
+  margin-bottom:0.75rem;
+}
+.btn-google-signin:hover{border-color:var(--black);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+.btn-google-signin svg{width:18px;height:18px;flex-shrink:0}
+.modal-note{font-size:10.5px;color:var(--g400);text-align:center;line-height:1.6}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  background:var(--black);color:var(--white);
+  font-size:12px;font-weight:500;padding:9px 18px;border-radius:999px;
+  z-index:999;transition:opacity 0.3s;white-space:nowrap;
+}
+.toast.hidden{opacity:0;pointer-events:none}
+
+/* footer */
+footer{
+  border-top:1px solid var(--g100);
+  text-align:center;padding:1.5rem 1rem;
+  font-size:11px;color:var(--g400);line-height:1.8;
+}
+footer a{color:var(--g500);text-decoration:none}
+footer a:hover{color:var(--black)}
+
+@media(max-width:380px){
+  .options-row{grid-template-columns:1fr}
+  .hero h1{font-size:1.75rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><span class="logo-dot"></span>DomRush</div>
+  <div class="nav-right">
+    <div id="nav-auth">
+      <button class="btn-login" onclick="openPremiumModal('login')">
+        <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
+        Sign in with Google
+      </button>
+    </div>
+    <div id="nav-user" style="display:none">
+      <div class="user-pill" onclick="openPremiumModal('account')">
+        <img class="user-avatar" id="user-avatar" src="" alt=""/>
+        <span id="user-name-short"></span>
+        <span id="user-tier-badge" class="free-badge">Free</span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-chip"><span class="chip-dot"></span>AI-powered · Live</div>
+  <h1>Rush to the <span class="italic">perfect</span><br/>domain name</h1>
+  <p>Describe your product and we'll generate creative, brandable domain names in seconds.</p>
+  <div class="uses-bar" id="uses-bar">
+    <strong id="uses-left">3</strong>&nbsp;free searches left today &nbsp;·&nbsp; <span style="color:var(--gold-dark);font-weight:600;cursor:pointer" onclick="openPremiumModal('upgrade')">Go Premium →</span>
+  </div>
+</div>
+
+<!-- EXAMPLES -->
+<div class="examples-section">
+  <div class="examples-label">Try an example</div>
+  <div class="examples-scroll" id="examples-scroll"></div>
+</div>
+
+<!-- SEARCH CARD -->
+<div class="search-card" style="margin-top:1rem">
+  <div class="field-group">
+    <label class="field-label" for="product-desc">Describe your product or idea</label>
+    <textarea id="product-desc" placeholder="e.g. A SaaS tool that helps e-commerce brands automate their customer support with AI chatbots..." rows="3"></textarea>
+  </div>
+
+  <div class="options-row">
+    <div>
+      <label class="field-label">Style</label>
+      <div class="pill-group" id="style-pills">
+        <div class="pill active" data-val="catchy">Catchy</div>
+        <div class="pill" data-val="professional">Pro</div>
+        <div class="pill" data-val="minimal">Minimal</div>
+        <div class="pill" data-val="playful">Playful</div>
+        <div class="pill" data-val="techy">Techy</div>
+      </div>
+    </div>
+    <div>
+      <label class="field-label">Extensions</label>
+      <div class="pill-group" id="ext-pills">
+        <div class="pill active" data-val=".com">.com</div>
+        <div class="pill active" data-val=".io">.io</div>
+        <div class="pill" data-val=".co">.co</div>
+        <div class="pill" data-val=".app">.app</div>
+        <div class="pill" data-val=".ai">.ai</div>
+        <div class="pill" data-val=".xyz">.xyz</div>
+        <div class="pill" data-val=".dev">.dev</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="field-group">
+    <label class="field-label">Keywords to include <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--g300)">(optional)</span></label>
+    <input type="text" id="keywords" placeholder="e.g. swift, flow, boost"/>
+  </div>
+
+  <!-- Premium feature teaser -->
+  <div class="premium-row" id="premium-teaser">
+    <div class="lock-icon">🔒</div>
+    <div class="pr-text">
+      <div class="pr-title">Premium: 30 results + availability check</div>
+      <div class="pr-desc">Free plan gives 10 results. Premium unlocks 30 names, real availability data, and saved history.</div>
+    </div>
+    <button class="btn-upgrade" onclick="openPremiumModal('upgrade')">Unlock</button>
+  </div>
+
+  <button class="btn-generate" id="btn-gen" onclick="generate()">
+    Generate Domain Names →
+  </button>
+</div>
+
+<!-- RESULTS -->
+<div class="results-wrap" id="results-wrap" style="display:none">
+  <div class="results-header">
+    <span class="results-label">Results</span>
+    <span class="count-pill" id="count-pill">0</span>
+  </div>
+  <div class="domain-list" id="domain-list"></div>
+  <div id="blur-cta" style="display:none;text-align:center;padding:1.5rem 0 0">
+    <p style="font-size:13px;color:var(--g500);margin-bottom:0.75rem">🔒 <strong>5 more results</strong> hidden — unlock with Premium</p>
+    <button class="btn-generate" style="max-width:260px;margin:0 auto;display:block;padding:0.7rem 1.5rem;font-size:0.875rem" onclick="openPremiumModal('upgrade')">Get Premium for Full Access</button>
+  </div>
+</div>
+
+<footer>
+  <strong style="font-family:'Fraunces',serif;font-weight:400;font-style:italic">DomRush.xyz</strong><br/>
+  AI-powered domain name discovery · Results are suggestions only<br/>
+  <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a>
+</footer>
+
+<!-- PREMIUM / LOGIN MODAL -->
+<div class="modal-overlay hidden" id="modal-overlay" onclick="closeModalIfBg(event)">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-login-view">
+      <div style="font-size:1.75rem;margin-bottom:0.5rem">⚡</div>
+      <div class="modal-title">Go Premium</div>
+      <div class="modal-sub">Sign in with Google to unlock all features — free for early access users.</div>
+
+      <div class="plan-feature">
+        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        <p><strong>30 domain suggestions</strong> per search (vs 10 free)</p>
+      </div>
+      <div class="plan-feature">
+        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        <p><strong>Real availability check</strong> via WHOIS lookup</p>
+      </div>
+      <div class="plan-feature">
+        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        <p><strong>Saved search history</strong> — access past results anytime</p>
+      </div>
+      <div class="plan-feature">
+        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        <p><strong>Unlimited searches</strong> — no daily limits</p>
+      </div>
+      <div class="plan-feature">
+        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+        <p><strong>Export to CSV</strong> — download your domain list</p>
+      </div>
+
+      <hr class="modal-divider"/>
+
+      <button class="btn-google-signin" onclick="signInWithGoogle()">
+        <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+      <div class="modal-note">By signing in you agree to our Terms & Privacy Policy.<br/>No credit card required for Premium early access.</div>
+    </div>
+
+    <!-- Logged-in account view -->
+    <div id="modal-account-view" style="display:none">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem">
+        <img id="modal-avatar" src="" style="width:48px;height:48px;border-radius:50%;border:1.5px solid var(--g200)" alt=""/>
+        <div>
+          <div style="font-family:'Fraunces',serif;font-weight:400;font-size:1.1rem;font-style:italic" id="modal-fullname"></div>
+          <div style="font-size:12px;color:var(--g500)" id="modal-email"></div>
+        </div>
+      </div>
+      <div style="background:var(--g50);border-radius:var(--r-lg);padding:1rem;margin-bottom:1.25rem">
+        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--g400);margin-bottom:0.5rem">Your Plan</div>
+        <div style="font-size:1.2rem;font-weight:300;font-family:'Fraunces',serif;font-style:italic" id="modal-plan-name">Free</div>
+        <div style="font-size:12px;color:var(--g500);margin-top:2px" id="modal-plan-desc">10 results per search · 3 searches/day</div>
+      </div>
+      <button class="btn-generate" style="margin-bottom:0.75rem" onclick="closeModal()">Back to Search</button>
+      <button onclick="signOut()" style="width:100%;background:none;border:1px solid var(--g200);border-radius:var(--r-md);padding:0.7rem;font-size:13px;color:var(--g500);cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.15s" onmouseover="this.style.borderColor='#080808'" onmouseout="this.style.borderColor='var(--g200)'">Sign out</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast hidden" id="toast"></div>
+
+<script>
+// ── STATE ──
+const API_URL = "https://api.anthropic.com/v1/messages";
+let user = null;
+let isPremium = false;
+let usesLeft = 3;
+let modalMode = 'upgrade';
+
+// ── EXAMPLES (30+) ──
+const EXAMPLES = [
+  "A food delivery app for healthy meals",
+  "SaaS tool for freelancers to track invoices",
+  "AI-powered resume builder",
+  "Online marketplace for handmade crafts",
+  "Fitness coaching app with live trainers",
+  "Dog walking and pet sitting platform",
+  "Legal document generator for startups",
+  "Smart budgeting app for Gen Z",
+  "B2B CRM for small sales teams",
+  "Crypto portfolio tracker",
+  "No-code website builder",
+  "Mental health journaling app",
+  "Online tutoring marketplace for STEM",
+  "AI meeting notes & summary tool",
+  "Project management for remote teams",
+  "Social media scheduling tool",
+  "E-commerce analytics dashboard",
+  "Email marketing platform for creators",
+  "Virtual interior design consultation",
+  "Subscription box for book lovers",
+  "API monitoring and uptime alerts",
+  "Car maintenance reminder app",
+  "Travel itinerary planner with AI",
+  "Gamified language learning app",
+  "Influencer marketing platform",
+  "Open-source code review tool",
+  "Digital business card app",
+  "Recruitment ATS for startups",
+  "Real estate listing aggregator",
+  "Podcast discovery and player app",
+  "Home recipe and meal prep planner",
+  "On-demand laundry and dry cleaning",
+  "Kid-safe YouTube alternative",
+  "Productivity timer for deep work",
+  "Blockchain-based voting system",
+];
+
+// render example chips
+const scroll = document.getElementById('examples-scroll');
+EXAMPLES.forEach(ex => {
+  const chip = document.createElement('div');
+  chip.className = 'example-chip';
+  chip.textContent = ex;
+  chip.onclick = () => {
+    document.getElementById('product-desc').value = ex;
+    document.getElementById('product-desc').focus();
+    // scroll to input
+    document.querySelector('.search-card').scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  scroll.appendChild(chip);
+});
+
+// ── PILL TOGGLES ──
+document.querySelectorAll('.pill-group').forEach(g => {
+  const single = g.id === 'style-pills';
+  g.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => {
+      if (single) { g.querySelectorAll('.pill').forEach(x=>x.classList.remove('active')); p.classList.add('active'); }
+      else p.classList.toggle('active');
+    });
+  });
+});
+function getActive(id){ return [...document.querySelectorAll(`#${id} .pill.active`)].map(p=>p.dataset.val) }
+
+// ── USES COUNTER ──
+function updateUsesBar(){
+  if(user){ document.getElementById('uses-bar').style.display='none'; return; }
+  const el = document.getElementById('uses-left');
+  el.textContent = usesLeft;
+  if(usesLeft<=0) el.style.color='#dc2626';
+}
+
+// ── GENERATE ──
+async function generate(){
+  const desc = document.getElementById('product-desc').value.trim();
+  if(!desc){ document.getElementById('product-desc').focus(); showToast('Please describe your product first'); return; }
+  if(!user && usesLeft <= 0){ openPremiumModal('upgrade'); return; }
+
+  const style = getActive('style-pills')[0]||'catchy';
+  const exts  = getActive('ext-pills');
+  const kw    = document.getElementById('keywords').value.trim();
+  const count = isPremium ? 30 : 10;
+  const btn   = document.getElementById('btn-gen');
+
+  btn.disabled=true; btn.textContent='Generating…';
+  showLoading();
+  if(!user){ usesLeft--; updateUsesBar(); }
+
+  const extList = exts.length ? exts.join(', ') : '.com, .io';
+  const kwNote  = kw ? `\nKeywords to incorporate: ${kw}.` : '';
+
+  const prompt = `You are a world-class domain naming expert and brand strategist.
+A user described their product: "${desc}"
+
+Generate exactly ${count} creative, memorable, brandable domain name suggestions.
+Style: ${style}.
+Preferred TLDs: ${extList}.${kwNote}
+
+Rules:
+- Each domain must be unique and different from the others
+- Mix approaches: compound words, portmanteaus, invented words, action words, metaphors, abbreviations
+- Vary TLDs across the preferred list
+- Ideally under 15 characters total
+- No hyphens. No numbers unless very natural
+- Names must be easy to spell when heard out loud
+- 20% of results can be creative/unexpected outside-the-box names
+
+Respond ONLY with a valid JSON array, no markdown, no comments, no extra text:
+[{"name":"domain.tld","why":"One punchy sentence why it works.","tags":[]},...]
+tags can include: "short", "creative", "hot" — max 2 per domain. Many domains will have empty tags [].`;
+
+  try {
+    const res = await fetch(API_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})
+    });
+    const data = await res.json();
+    const text = (data.content||[]).map(b=>b.text||'').join('');
+    const clean = text.replace(/```json|```/g,'').trim();
+    const domains = JSON.parse(clean);
+    renderDomains(domains);
+  } catch(e) {
+    document.getElementById('domain-list').innerHTML=`<div class="empty">⚠️ Something went wrong. Please try again.<br/><small style="font-size:10px;color:var(--g400)">${e.message}</small></div>`;
+    document.getElementById('results-wrap').style.display='';
+  } finally {
+    btn.disabled=false; btn.textContent='Generate Domain Names →';
+  }
+}
+
+function showLoading(){
+  const list = document.getElementById('domain-list');
+  list.innerHTML = `<div class="skeleton-list">${Array(6).fill(`<div class="skel-card"><div class="skel-line sl-wide"></div><div class="skel-line sl-narrow"></div></div>`).join('')}</div>`;
+  document.getElementById('results-wrap').style.display='';
+  document.getElementById('blur-cta').style.display='none';
+}
+
+function renderDomains(domains){
+  const list = document.getElementById('domain-list');
+  document.getElementById('count-pill').textContent = domains.length;
+  list.innerHTML='';
+
+  if(!domains.length){ list.innerHTML='<div class="empty">No results. Try a different description.</div>'; return; }
+
+  const visibleCount = isPremium ? domains.length : Math.min(10, domains.length);
+  const hiddenCount  = domains.length - visibleCount;
+
+  const badgeMap = {
+    short:'<span class="badge b-short">Short</span>',
+    creative:'<span class="badge b-creative">Creative</span>',
+    hot:'<span class="badge b-hot">Trending</span>',
+  };
+
+  list.innerHTML = domains.map((d,i)=>{
+    const m = d.name.match(/^(.+?)(\.[a-z]+)$/i);
+    const base = m?m[1]:d.name, ext=m?m[2]:'';
+    const tagBadges = (d.tags||[]).map(t=>badgeMap[t]||'').join('');
+    const tldBadge = ext?`<span class="badge b-tld">${ext}</span>`:'';
+    const blurred = !isPremium && i >= 10;
+    return `<div class="domain-card${blurred?' blurred':''}" style="animation-delay:${Math.min(i,10)*0.05}s">
+      <div class="dc-left">
+        <div class="domain-name">${base}<span class="ext">${ext}</span></div>
+        <div class="domain-why">${d.why||''}</div>
+        <div class="domain-badges">${tldBadge}${tagBadges}${blurred?'<span class="badge b-premium">Premium</span>':''}</div>
+      </div>
+      <div class="dc-right">
+        ${blurred
+          ? `<button class="lock-btn" onclick="openPremiumModal('upgrade')">🔒 Unlock</button>`
+          : `<button class="btn-check" onclick="checkDomain('${d.name}')">Check →</button>`
+        }
+      </div>
+    </div>`;
+  }).join('');
+
+  if(!isPremium && hiddenCount > 0){
+    document.getElementById('blur-cta').style.display='block';
+    document.getElementById('blur-cta').querySelector('p').innerHTML = `🔒 <strong>${hiddenCount} more results</strong> hidden — unlock with Premium`;
+  }
+}
+
+function checkDomain(name){
+  window.open(`https://www.namecheap.com/domains/registration/results/?domain=${encodeURIComponent(name)}`, '_blank');
+}
+
+// Enter key
+document.getElementById('product-desc').addEventListener('keydown', e=>{
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); generate(); }
+});
+
+// ── GOOGLE OAUTH ──
+// NOTE: Replace with your actual Google OAuth Client ID from console.cloud.google.com
+const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
+
+function signInWithGoogle(){
+  // Initialize Google Identity Services
+  if(typeof google === 'undefined'){
+    showToast('Google Sign-In loading... please wait');
+    return;
+  }
+  google.accounts.id.initialize({
+    client_id: GOOGLE_CLIENT_ID,
+    callback: handleGoogleCredential,
+    auto_select: false,
+  });
+  google.accounts.id.prompt((notification)=>{
+    if(notification.isNotDisplayed() || notification.isSkippedMoment()){
+      // Fallback: render button manually
+      google.accounts.id.renderButton(
+        document.getElementById('google-btn-container'),
+        {theme:'outline', size:'large', width:'100%', text:'continue_with'}
+      );
+    }
+  });
+}
+
+function handleGoogleCredential(response){
+  // Decode JWT (header.payload.signature)
+  try{
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    user = {
+      name: payload.name,
+      email: payload.email,
+      avatar: payload.picture,
+      given_name: payload.given_name,
+    };
+    isPremium = false; // set true when you integrate a payment backend
+    usesLeft = 999;
+    updateUI();
+    closeModal();
+    showToast(`Welcome, ${user.given_name}! 🎉`);
+  } catch(e){
+    showToast('Sign-in failed. Please try again.');
+  }
+}
+
+function signOut(){
+  user = null; isPremium = false; usesLeft = 3;
+  updateUI(); closeModal(); showToast('Signed out');
+}
+
+function updateUI(){
+  const authEl = document.getElementById('nav-auth');
+  const userEl = document.getElementById('nav-user');
+  if(user){
+    authEl.style.display='none'; userEl.style.display='';
+    document.getElementById('user-avatar').src = user.avatar;
+    document.getElementById('user-name-short').textContent = user.given_name;
+    document.getElementById('user-tier-badge').textContent = isPremium?'Premium':'Free';
+    document.getElementById('user-tier-badge').className = isPremium?'premium-badge':'free-badge';
+    // hide premium teaser
+    document.getElementById('premium-teaser').style.opacity = isPremium?'0.4':'1';
+    document.getElementById('uses-bar').style.display='none';
+  } else {
+    authEl.style.display=''; userEl.style.display='none';
+    updateUsesBar();
+  }
+}
+
+// ── MODAL ──
+function openPremiumModal(mode='upgrade'){
+  modalMode = mode;
+  document.getElementById('modal-overlay').classList.remove('hidden');
+  const loginView   = document.getElementById('modal-login-view');
+  const accountView = document.getElementById('modal-account-view');
+  if(mode==='account' && user){
+    loginView.style.display='none'; accountView.style.display='';
+    document.getElementById('modal-avatar').src = user.avatar;
+    document.getElementById('modal-fullname').textContent = user.name;
+    document.getElementById('modal-email').textContent = user.email;
+    document.getElementById('modal-plan-name').textContent = isPremium?'Premium ⚡':'Free';
+    document.getElementById('modal-plan-desc').textContent = isPremium?'30 results · Unlimited searches':'10 results · 3 searches/day';
+  } else {
+    loginView.style.display=''; accountView.style.display='none';
+  }
+}
+function closeModal(){ document.getElementById('modal-overlay').classList.add('hidden'); }
+function closeModalIfBg(e){ if(e.target===document.getElementById('modal-overlay')) closeModal(); }
+
+// ── TOAST ──
+let toastTimer;
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.add('hidden'), 2800);
+}
+
+// init
+updateUsesBar();
+</script>
+</body>
+</html>
