@@ -28,9 +28,23 @@ nav{
   display:flex;align-items:center;justify-content:space-between;
   height:54px;
 }
-.logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;letter-spacing:-0.02em;font-style:italic;display:flex;align-items:center;gap:6px}
+.logo{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;letter-spacing:-0.02em;font-style:italic;display:flex;align-items:center;gap:6px;cursor:pointer}
 .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--black);display:inline-block}
-.nav-right{display:flex;align-items:center;gap:10px}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-links{display:flex;align-items:center;gap:4px;margin-right:4px}
+.nav-link{font-size:12px;font-weight:500;color:var(--g500);padding:5px 10px;border-radius:999px;cursor:pointer;transition:all 0.15s;white-space:nowrap;text-decoration:none;border:none;background:transparent}
+.nav-link:hover{color:var(--black);background:var(--g50)}
+.nav-link.active{color:var(--black);font-weight:600}
+.btn-x{
+  display:flex;align-items:center;gap:5px;
+  font-family:'Instrument Sans',sans-serif;font-size:11.5px;font-weight:600;
+  padding:6px 12px;border-radius:999px;
+  border:1px solid var(--g200);
+  background:var(--white);color:var(--black);
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;text-decoration:none;
+}
+.btn-x:hover{background:var(--black);color:var(--white);border-color:var(--black)}
+.btn-x svg{width:13px;height:13px;flex-shrink:0}
 .btn-login{
   font-family:'Instrument Sans',sans-serif;font-size:12px;font-weight:500;
   padding:7px 14px;border-radius:999px;
@@ -41,331 +55,201 @@ nav{
 }
 .btn-login:hover{border-color:var(--black)}
 .btn-login svg{width:14px;height:14px;flex-shrink:0}
-.user-avatar{
-  width:30px;height:30px;border-radius:50%;
-  object-fit:cover;border:1.5px solid var(--g200);
-  cursor:pointer;
-}
-.user-pill{
-  display:flex;align-items:center;gap:7px;
-  font-size:12px;font-weight:500;color:var(--g700);
-  cursor:pointer;
-}
-.premium-badge{
-  font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  background:var(--black);color:var(--white);
-  padding:2px 7px;border-radius:999px;
-}
-.free-badge{
-  font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
-  background:var(--g100);color:var(--g500);
-  padding:2px 7px;border-radius:999px;
-}
+.user-avatar{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid var(--g200);cursor:pointer}
+.user-pill{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--g700);cursor:pointer}
+.premium-badge{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--black);color:var(--white);padding:2px 7px;border-radius:999px}
+.free-badge{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--g100);color:var(--g500);padding:2px 7px;border-radius:999px}
+
+/* ── PAGES ── */
+.page{display:none}
+.page.active{display:block}
 
 /* ── HERO ── */
 .hero{padding:3rem 1.25rem 1.5rem;text-align:center;max-width:680px;margin:0 auto}
-.hero-chip{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;
-  color:var(--g500);margin-bottom:1.25rem;
-}
+.hero-chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--g500);margin-bottom:1.25rem}
 .chip-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;animation:blink 2s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero h1{
-  font-family:'Fraunces',serif;font-size:clamp(1.9rem,7vw,3.2rem);font-variation-settings:'opsz' 72;
-  font-weight:300;line-height:1.05;letter-spacing:-0.025em;margin-bottom:1rem;
-}
+.hero h1{font-family:'Fraunces',serif;font-size:clamp(1.9rem,7vw,3.2rem);font-variation-settings:'opsz' 72;font-weight:300;line-height:1.05;letter-spacing:-0.025em;margin-bottom:1rem}
 .hero h1 .italic{font-style:italic;font-weight:300;font-variation-settings:"opsz" 72}
 .hero p{font-size:0.9375rem;color:var(--g500);line-height:1.7;max-width:420px;margin:0 auto 1.5rem}
-
-/* free uses counter */
-.uses-bar{
-  display:inline-flex;align-items:center;gap:8px;
-  background:var(--g50);border:1px solid var(--g200);
-  border-radius:999px;padding:5px 14px;
-  font-size:12px;color:var(--g500);margin-bottom:2rem;
-}
+.uses-bar{display:inline-flex;align-items:center;gap:8px;background:var(--g50);border:1px solid var(--g200);border-radius:999px;padding:5px 14px;font-size:12px;color:var(--g500);margin-bottom:2rem}
 .uses-bar strong{color:var(--black);font-weight:600}
 
 /* ── EXAMPLES STRIP ── */
 .examples-section{max-width:680px;margin:0 auto 0.5rem;padding:0 1.25rem}
 .examples-label{font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--g400);margin-bottom:0.6rem}
-.examples-scroll{
-  display:flex;gap:0.5rem;
-  overflow-x:auto;padding-bottom:4px;
-  scrollbar-width:none;-ms-overflow-style:none;
-}
+.examples-scroll{display:flex;gap:0.5rem;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
 .examples-scroll::-webkit-scrollbar{display:none}
-.example-chip{
-  flex-shrink:0;
-  font-size:12px;font-weight:500;
-  padding:6px 14px;border-radius:999px;
-  border:1px solid var(--g200);
-  background:var(--white);color:var(--g700);
-  cursor:pointer;transition:all 0.15s;
-  white-space:nowrap;
-}
+.example-chip{flex-shrink:0;font-size:12px;font-weight:500;padding:6px 14px;border-radius:999px;border:1px solid var(--g200);background:var(--white);color:var(--g700);cursor:pointer;transition:all 0.15s;white-space:nowrap}
 .example-chip:hover{border-color:var(--black);color:var(--black)}
 
 /* ── SEARCH CARD ── */
-.search-card{
-  background:var(--g50);border:1px solid var(--g100);
-  border-radius:var(--r-2xl);padding:1.25rem;
-  max-width:680px;margin:0.75rem auto 1.5rem;
-}
-.field-label{
-  display:block;font-size:10px;font-weight:600;
-  letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--g400);margin-bottom:0.4rem;
-}
-textarea,input[type="text"]{
-  width:100%;font-family:'Instrument Sans',sans-serif;font-size:0.9rem;
-  background:var(--white);border:1px solid var(--g200);
-  border-radius:var(--r-md);padding:0.7rem 0.9rem;
-  color:var(--black);resize:none;transition:border-color 0.15s;
-  outline:none;line-height:1.55;
-}
+.search-card{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r-2xl);padding:1.25rem;max-width:680px;margin:0.75rem auto 1.5rem}
+.field-label{display:block;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:0.4rem}
+textarea,input[type="text"]{width:100%;font-family:'Instrument Sans',sans-serif;font-size:0.9rem;background:var(--white);border:1px solid var(--g200);border-radius:var(--r-md);padding:0.7rem 0.9rem;color:var(--black);resize:none;transition:border-color 0.15s;outline:none;line-height:1.55}
 textarea:focus,input[type="text"]:focus{border-color:var(--black)}
 textarea{min-height:72px}
-
 .options-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.875rem}
 .field-group{margin-bottom:0.875rem}
 .pill-group{display:flex;flex-wrap:wrap;gap:0.35rem}
-.pill{
-  font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:999px;
-  border:1px solid var(--g200);background:var(--white);color:var(--g700);
-  cursor:pointer;transition:all 0.15s;user-select:none;
-}
+.pill{font-size:11.5px;font-weight:500;padding:4px 11px;border-radius:999px;border:1px solid var(--g200);background:var(--white);color:var(--g700);cursor:pointer;transition:all 0.15s;user-select:none}
 .pill:hover{border-color:var(--black);color:var(--black)}
 .pill.active{background:var(--black);color:var(--white);border-color:var(--black)}
-
-/* premium options row */
-.premium-row{
-  background:linear-gradient(135deg,#fefce8,#fef3c7);
-  border:1px solid #fcd34d;border-radius:var(--r-md);
-  padding:0.75rem 1rem;margin-bottom:0.875rem;
-  display:flex;align-items:flex-start;gap:0.75rem;
-}
+.premium-row{background:linear-gradient(135deg,#fefce8,#fef3c7);border:1px solid #fcd34d;border-radius:var(--r-md);padding:0.75rem 1rem;margin-bottom:0.875rem;display:flex;align-items:flex-start;gap:0.75rem}
 .premium-row .lock-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
 .premium-row .pr-text{flex:1}
 .premium-row .pr-title{font-size:12px;font-weight:600;color:var(--gold-dark);margin-bottom:2px}
 .premium-row .pr-desc{font-size:11px;color:#92400e;line-height:1.4}
-.btn-upgrade{
-  font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;
-  background:var(--black);color:var(--white);border:none;cursor:pointer;
-  flex-shrink:0;margin-top:2px;transition:opacity 0.15s;
-}
+.btn-upgrade{font-size:11px;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--black);color:var(--white);border:none;cursor:pointer;flex-shrink:0;margin-top:2px;transition:opacity 0.15s}
 .btn-upgrade:hover{opacity:0.8}
-
-/* generate button */
-.btn-generate{
-  width:100%;background:var(--black);color:var(--white);
-  border:none;border-radius:var(--r-md);
-  padding:0.8rem 1.5rem;
-  font-family:'Instrument Sans',sans-serif;font-size:0.9375rem;font-weight:600;letter-spacing:0.01em;
-  cursor:pointer;transition:opacity 0.15s,transform 0.1s;
-  letter-spacing:0.01em;
-}
+.btn-generate{width:100%;background:var(--black);color:var(--white);border:none;border-radius:var(--r-md);padding:0.8rem 1.5rem;font-family:'Instrument Sans',sans-serif;font-size:0.9375rem;font-weight:600;cursor:pointer;transition:opacity 0.15s,transform 0.1s;letter-spacing:0.01em}
 .btn-generate:hover{opacity:0.85}
 .btn-generate:active{transform:scale(0.99)}
 .btn-generate:disabled{opacity:0.35;cursor:not-allowed;transform:none}
 
 /* ── RESULTS ── */
 .results-wrap{max-width:680px;margin:0 auto;padding:0 1.25rem 5rem}
-.results-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:0.875rem;
-}
+.results-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.875rem}
 .results-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400)}
 .count-pill{background:var(--black);color:var(--white);font-size:10px;padding:2px 9px;border-radius:999px}
-
 .domain-list{display:flex;flex-direction:column;gap:0.5rem}
-.domain-card{
-  background:var(--white);border:1px solid var(--g100);
-  border-radius:var(--r-lg);padding:0.875rem 1rem;
-  display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;
-  transition:border-color 0.15s,box-shadow 0.15s;
-  animation:slideUp 0.3s ease both;
-}
+.domain-card{background:var(--white);border:1px solid var(--g100);border-radius:var(--r-lg);padding:0.875rem 1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;transition:border-color 0.15s,box-shadow 0.15s;animation:slideUp 0.3s ease both}
 .domain-card:hover{border-color:var(--g300);box-shadow:0 2px 16px rgba(0,0,0,0.05)}
 .domain-card.blurred .domain-name{filter:blur(5px);user-select:none}
 .domain-card.blurred .domain-why{filter:blur(3px);user-select:none}
 @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-
 .dc-left{flex:1;min-width:0}
-.domain-name{
-  font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;font-style:italic;
-  letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
+.domain-name{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;font-style:italic;letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .domain-name .ext{color:var(--g400);font-weight:500}
 .domain-why{font-size:12px;color:var(--g500);margin-top:3px;line-height:1.5}
 .domain-badges{display:flex;gap:5px;margin-top:6px;flex-wrap:wrap;align-items:center}
-.badge{
-  font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
-  padding:2px 8px;border-radius:999px;border:1px solid;
-}
+.badge{font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid}
 .b-tld{border-color:var(--g200);color:var(--g500)}
 .b-short{border-color:#86efac;color:#166534;background:#f0fdf4}
 .b-creative{border-color:#c4b5fd;color:#5b21b6;background:#f5f3ff}
 .b-hot{border-color:#fca5a5;color:#991b1b;background:#fef2f2}
 .b-premium{border-color:var(--gold);color:var(--gold-dark);background:var(--gold-light)}
-
+.b-brandable{border-color:#7dd3fc;color:#0369a1;background:#f0f9ff}
+.b-punchy{border-color:#fdba74;color:#9a3412;background:#fff7ed}
 .dc-right{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
-.btn-check{
-  font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:600;
-  padding:5px 12px;border-radius:var(--r-sm);
-  border:1px solid var(--black);background:transparent;color:var(--black);
-  cursor:pointer;transition:all 0.15s;white-space:nowrap;
-}
+.btn-check{font-family:'Instrument Sans',sans-serif;font-size:11px;font-weight:600;padding:5px 12px;border-radius:var(--r-sm);border:1px solid var(--black);background:transparent;color:var(--black);cursor:pointer;transition:all 0.15s;white-space:nowrap}
 .btn-check:hover{background:var(--black);color:var(--white)}
-.lock-btn{
-  font-size:10px;font-weight:600;color:var(--g400);
-  border:1px solid var(--g200);background:var(--g50);
-  padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;
-  white-space:nowrap;transition:all 0.15s;
-}
+.lock-btn{font-size:10px;font-weight:600;color:var(--g400);border:1px solid var(--g200);background:var(--g50);padding:5px 12px;border-radius:var(--r-sm);cursor:pointer;white-space:nowrap;transition:all 0.15s}
 .lock-btn:hover{border-color:var(--gold);color:var(--gold-dark)}
-
-/* skeleton */
 .skeleton-list{display:flex;flex-direction:column;gap:0.5rem}
 .skel-card{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r-lg);padding:0.875rem 1rem;animation:pulse 1.5s ease infinite}
 .skel-line{height:13px;background:var(--g100);border-radius:4px;margin-bottom:7px}
 .sl-wide{width:55%}.sl-narrow{width:38%;height:10px}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
-
-/* empty */
 .empty{text-align:center;padding:3rem 1rem;color:var(--g400);font-size:0.875rem}
 
+/* ── ROADMAP PAGE ── */
+.page-wrap{max-width:720px;margin:0 auto;padding:2.5rem 1.25rem 5rem}
+.page-header{text-align:center;margin-bottom:3rem}
+.page-eyebrow{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:0.75rem}
+.page-title{font-family:'Fraunces',serif;font-size:clamp(1.75rem,5vw,2.8rem);font-weight:300;letter-spacing:-0.025em;line-height:1.1;margin-bottom:0.875rem}
+.page-title .italic{font-style:italic}
+.page-subtitle{font-size:0.9375rem;color:var(--g500);line-height:1.7;max-width:480px;margin:0 auto}
+
+/* timeline */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:7px;top:0;bottom:0;width:1.5px;background:linear-gradient(to bottom,var(--black) 0%,var(--g200) 60%,transparent 100%)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-dot{position:absolute;left:-2rem;top:4px;width:14px;height:14px;border-radius:50%;border:2px solid var(--black);background:var(--white);z-index:1;display:flex;align-items:center;justify-content:center}
+.tl-dot.active{background:var(--black)}
+.tl-dot.active::after{content:'';width:5px;height:5px;border-radius:50%;background:var(--white)}
+.tl-dot.future{border-color:var(--g300);background:var(--white)}
+.tl-dot.milestone{background:var(--gold);border-color:var(--gold)}
+.tl-date{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);margin-bottom:0.35rem}
+.tl-card{background:var(--white);border:1px solid var(--g100);border-radius:var(--r-lg);padding:1rem 1.125rem}
+.tl-card.highlight{border-color:var(--gold);background:var(--gold-light)}
+.tl-card.upcoming{border-color:var(--g200);background:var(--g50)}
+.tl-title{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:400;letter-spacing:-0.015em;margin-bottom:0.3rem}
+.tl-desc{font-size:12.5px;color:var(--g500);line-height:1.6}
+.tl-tag{display:inline-flex;align-items:center;gap:4px;font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-bottom:0.5rem}
+.tl-tag.live{background:#dcfce7;color:#166534;border:1px solid #86efac}
+.tl-tag.soon{background:#fef3c7;color:#92400e;border:1px solid #fcd34d}
+.tl-tag.planned{background:var(--g100);color:var(--g500);border:1px solid var(--g200)}
+.tl-features{margin-top:0.6rem;display:flex;flex-wrap:wrap;gap:5px}
+.tl-feat{font-size:10.5px;font-weight:500;padding:3px 9px;border-radius:999px;background:rgba(0,0,0,0.06);color:var(--g700)}
+
+/* ── PARTNERSHIPS PAGE ── */
+.partners-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:1.5rem}
+.partner-card{background:var(--white);border:1px solid var(--g100);border-radius:var(--r-lg);padding:1.25rem;transition:all 0.15s;cursor:default}
+.partner-card:hover{border-color:var(--g300);box-shadow:0 4px 20px rgba(0,0,0,0.06);transform:translateY(-1px)}
+.partner-logo-area{display:flex;align-items:center;gap:10px;margin-bottom:0.75rem}
+.partner-icon{width:40px;height:40px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.partner-name{font-weight:600;font-size:0.9375rem}
+.partner-type{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--g400);margin-top:1px}
+.partner-desc{font-size:12.5px;color:var(--g500);line-height:1.6;margin-bottom:0.75rem}
+.partner-why{font-size:11.5px;color:var(--g700);background:var(--g50);border-radius:var(--r-sm);padding:0.5rem 0.75rem;border-left:2px solid var(--gold)}
+.partner-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:0.75rem}
+.p-tag{font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:var(--g50);color:var(--g500);border:1px solid var(--g200)}
+
+.section-divider{display:flex;align-items:center;gap:1rem;margin:2rem 0 1.5rem}
+.sd-line{flex:1;height:1px;background:var(--g100)}
+.sd-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--g400);white-space:nowrap}
+
 /* ── PREMIUM MODAL ── */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;
-  display:flex;align-items:flex-end;justify-content:center;
-  animation:fadeIn 0.2s ease;
-  backdrop-filter:blur(4px);
-}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn 0.2s ease;backdrop-filter:blur(4px)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-overlay.hidden{display:none}
-.modal{
-  background:#0d0d0b;border-radius:var(--r-2xl) var(--r-2xl) 0 0;
-  padding:0;width:100%;max-width:480px;overflow:hidden;
-  animation:slideUp2 0.35s cubic-bezier(0.34,1.4,0.64,1);
-  border:1px solid rgba(255,255,255,0.08);border-bottom:none;
-}
+.modal{background:#0d0d0b;border-radius:var(--r-2xl) var(--r-2xl) 0 0;padding:0;width:100%;max-width:480px;overflow:hidden;animation:slideUp2 0.35s cubic-bezier(0.34,1.4,0.64,1);border:1px solid rgba(255,255,255,0.08);border-bottom:none}
 @keyframes slideUp2{from{transform:translateY(100%)}to{transform:translateY(0)}}
-
-.modal-header{
-  position:relative;padding:1.75rem 1.5rem 1.5rem;
-  border-bottom:1px solid rgba(255,255,255,0.07);
-  overflow:hidden;
-}
-.modal-header::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 160% 100% at 50% 120%,rgba(201,168,76,0.18) 0%,transparent 70%);
-  pointer-events:none;
-}
-.shimmer-line{
-  position:absolute;top:0;left:-100%;width:60%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent);
-  animation:shimmer 3s ease infinite;
-}
+.modal-header{position:relative;padding:1.75rem 1.5rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.07);overflow:hidden}
+.modal-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 160% 100% at 50% 120%,rgba(201,168,76,0.18) 0%,transparent 70%);pointer-events:none}
+.shimmer-line{position:absolute;top:0;left:-100%;width:60%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent);animation:shimmer 3s ease infinite}
 @keyframes shimmer{0%{left:-60%}100%{left:160%}}
-
-.modal-close{
-  position:absolute;right:1.25rem;top:1.25rem;
-  width:28px;height:28px;border-radius:50%;
-  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  font-size:13px;color:rgba(255,255,255,0.5);transition:all 0.15s;
-}
+.modal-close{position:absolute;right:1.25rem;top:1.25rem;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:rgba(255,255,255,0.5);transition:all 0.15s}
 .modal-close:hover{background:rgba(255,255,255,0.14);color:white}
-
-.token-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);
-  border-radius:999px;padding:4px 10px;
-  font-size:11px;font-weight:600;color:#e2b96a;letter-spacing:0.04em;
-  margin-bottom:0.875rem;
-}
+.token-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600;color:#e2b96a;letter-spacing:0.04em;margin-bottom:0.875rem}
 .token-badge-dot{width:6px;height:6px;border-radius:50%;background:#e2b96a;animation:blink 2s ease infinite}
 .modal-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;letter-spacing:-0.02em;color:white;margin-bottom:0.25rem;font-style:italic}
 .modal-sub{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.55}
-
 .modal-body{padding:1.25rem 1.5rem 1.75rem}
-
-.token-requirement{
-  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
-  border-radius:var(--r-lg);padding:1rem;margin-bottom:1.25rem;
-}
+.token-requirement{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r-lg);padding:1rem;margin-bottom:1.25rem}
 .tr-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.75rem}
 .tr-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .tr-amount{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;color:#e2b96a;letter-spacing:-0.02em;line-height:1}
 .tr-ticker{font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);margin-top:3px;letter-spacing:0.06em}
 .tr-desc{font-size:11.5px;color:rgba(255,255,255,0.4);line-height:1.55;text-align:right;max-width:160px}
-
 .features-grid{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
 .feat-row{display:flex;align-items:center;gap:10px}
-.feat-check{
-  width:16px;height:16px;border-radius:4px;flex-shrink:0;
-  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);
-  display:flex;align-items:center;justify-content:center;
-}
+.feat-check{width:16px;height:16px;border-radius:4px;flex-shrink:0;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center}
 .feat-check svg{width:9px;height:9px;stroke:#e2b96a;stroke-width:2.5;fill:none}
 .feat-text{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.4}
 .feat-text strong{color:rgba(255,255,255,0.9);font-weight:500}
-
 .modal-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:0 0 1.25rem}
-
-.btn-connect-wallet{
-  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
-  background:#e2b96a;color:#0d0d0b;
-  border:none;border-radius:var(--r-md);
-  padding:0.875rem 1rem;font-size:0.9rem;font-weight:600;
-  cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;
-  margin-bottom:0.75rem;letter-spacing:0.01em;
-}
+.btn-connect-wallet{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:#e2b96a;color:#0d0d0b;border:none;border-radius:var(--r-md);padding:0.875rem 1rem;font-size:0.9rem;font-weight:600;cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;margin-bottom:0.75rem;letter-spacing:0.01em}
 .btn-connect-wallet:hover{background:#f0cc88;transform:translateY(-1px)}
 .btn-connect-wallet:active{transform:translateY(0)}
 .btn-connect-wallet svg{width:18px;height:18px;flex-shrink:0}
-
-.btn-google-signin{
-  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
-  background:transparent;color:rgba(255,255,255,0.6);
-  border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);
-  padding:0.75rem 1rem;font-size:0.875rem;font-weight:500;
-  cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;
-  margin-bottom:0.875rem;
-}
+.btn-google-signin{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:rgba(255,255,255,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:0.75rem 1rem;font-size:0.875rem;font-weight:500;cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;margin-bottom:0.875rem}
 .btn-google-signin:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.85)}
 .btn-google-signin svg{width:16px;height:16px;flex-shrink:0}
 .modal-note{font-size:10.5px;color:rgba(255,255,255,0.2);text-align:center;line-height:1.6}
 
-.plan-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.75rem}
-.plan-feature .checkmark{width:18px;height:18px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.plan-feature .checkmark svg{width:10px;height:10px;stroke:#e2b96a;stroke-width:3;fill:none}
-.plan-feature p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.4}
-.plan-feature p strong{color:rgba(255,255,255,0.88);font-weight:500}
-
 /* ── TOAST ── */
-.toast{
-  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
-  background:var(--black);color:var(--white);
-  font-size:12px;font-weight:500;padding:9px 18px;border-radius:999px;
-  z-index:999;transition:opacity 0.3s;white-space:nowrap;
-}
+.toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--black);color:var(--white);font-size:12px;font-weight:500;padding:9px 18px;border-radius:999px;z-index:999;transition:opacity 0.3s;white-space:nowrap}
 .toast.hidden{opacity:0;pointer-events:none}
 
 /* footer */
-footer{
-  border-top:1px solid var(--g100);
-  text-align:center;padding:1.5rem 1rem;
-  font-size:11px;color:var(--g400);line-height:1.8;
-}
+footer{border-top:1px solid var(--g100);text-align:center;padding:1.5rem 1rem;font-size:11px;color:var(--g400);line-height:1.8}
 footer a{color:var(--g500);text-decoration:none}
 footer a:hover{color:var(--black)}
 
-@media(max-width:380px){
+/* stat cards */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin:2rem 0}
+.stat-card{background:var(--g50);border:1px solid var(--g100);border-radius:var(--r-lg);padding:1rem;text-align:center}
+.stat-num{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;letter-spacing:-0.02em;line-height:1;margin-bottom:4px}
+.stat-label{font-size:11px;color:var(--g500)}
+
+@media(max-width:480px){
   .options-row{grid-template-columns:1fr}
   .hero h1{font-size:1.75rem}
+  .partners-grid{grid-template-columns:1fr}
+  .stats-row{grid-template-columns:1fr}
+  .nav-links .nav-link:nth-child(n+3){display:none}
 }
 </style>
 </head>
@@ -373,12 +257,21 @@ footer a:hover{color:var(--black)}
 
 <!-- NAV -->
 <nav>
-  <div class="logo"><span class="logo-dot"></span>DomRush</div>
+  <div class="logo" onclick="showPage('home')"><span class="logo-dot"></span>DomRush</div>
   <div class="nav-right">
+    <div class="nav-links">
+      <span class="nav-link active" id="nav-home" onclick="showPage('home')">Search</span>
+      <span class="nav-link" id="nav-roadmap" onclick="showPage('roadmap')">Roadmap</span>
+      <span class="nav-link" id="nav-partners" onclick="showPage('partners')">Partners</span>
+    </div>
+    <a class="btn-x" href="https://x.com/domrushxyz" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      @domrushxyz
+    </a>
     <div id="nav-auth">
       <button class="btn-login" onclick="openPremiumModal('login')">
         <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
-        Sign in with Google
+        Sign in
       </button>
     </div>
     <div id="nav-user" style="display:none">
@@ -391,156 +284,514 @@ footer a:hover{color:var(--black)}
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-chip"><span class="chip-dot"></span>Built on Solana · $DOMRUSH</div>
-  <h1>Rush to the <span class="italic">perfect</span><br/>domain name</h1>
-  <p>Describe your product and we'll generate creative, brandable domain names in seconds.</p>
-  <div class="uses-bar" id="uses-bar">
-    <strong id="uses-left">3</strong>&nbsp;free searches left today &nbsp;·&nbsp; <span style="color:var(--gold-dark);font-weight:600;cursor:pointer" onclick="openPremiumModal('upgrade')">Go Premium →</span>
-  </div>
-</div>
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div class="page active" id="page-home">
 
-<!-- EXAMPLES -->
-<div class="examples-section">
-  <div class="examples-label">Try an example</div>
-  <div class="examples-scroll" id="examples-scroll"></div>
-</div>
-
-<!-- SEARCH CARD -->
-<div class="search-card" style="margin-top:1rem">
-  <div class="field-group">
-    <label class="field-label" for="product-desc">Describe your product or idea</label>
-    <textarea id="product-desc" placeholder="e.g. A SaaS tool that helps e-commerce brands automate their customer support with AI chatbots..." rows="3"></textarea>
-  </div>
-
-  <div class="options-row">
-    <div>
-      <label class="field-label">Style</label>
-      <div class="pill-group" id="style-pills">
-        <div class="pill active" data-val="catchy">Catchy</div>
-        <div class="pill" data-val="professional">Pro</div>
-        <div class="pill" data-val="minimal">Minimal</div>
-        <div class="pill" data-val="playful">Playful</div>
-        <div class="pill" data-val="techy">Techy</div>
-      </div>
-    </div>
-    <div>
-      <label class="field-label">Extensions</label>
-      <div class="pill-group" id="ext-pills">
-        <div class="pill active" data-val=".com">.com</div>
-        <div class="pill active" data-val=".io">.io</div>
-        <div class="pill" data-val=".co">.co</div>
-        <div class="pill" data-val=".app">.app</div>
-        <div class="pill" data-val=".ai">.ai</div>
-        <div class="pill" data-val=".xyz">.xyz</div>
-        <div class="pill" data-val=".dev">.dev</div>
-      </div>
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-chip"><span class="chip-dot"></span>Built on Solana · $DOMRUSH</div>
+    <h1>Rush to the <span class="italic">perfect</span><br/>domain name</h1>
+    <p>Describe your product and we'll generate creative, brandable domain names in seconds.</p>
+    <div class="uses-bar" id="uses-bar">
+      <strong id="uses-left">3</strong>&nbsp;free searches left today &nbsp;·&nbsp; <span style="color:var(--gold-dark);font-weight:600;cursor:pointer" onclick="openPremiumModal('upgrade')">Go Premium →</span>
     </div>
   </div>
 
-  <div class="field-group">
-    <label class="field-label">Keywords to include <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--g300)">(optional)</span></label>
-    <input type="text" id="keywords" placeholder="e.g. swift, flow, boost"/>
+  <!-- EXAMPLES -->
+  <div class="examples-section">
+    <div class="examples-label">Try an example</div>
+    <div class="examples-scroll" id="examples-scroll"></div>
   </div>
 
-  <!-- Premium feature teaser -->
-  <div class="premium-row" id="premium-teaser" onclick="openPremiumModal('upgrade')" style="cursor:pointer">
-    <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
-      <div style="width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+  <!-- SEARCH CARD -->
+  <div class="search-card" style="margin-top:1rem">
+    <div class="field-group">
+      <label class="field-label" for="product-desc">Describe your product or idea</label>
+      <textarea id="product-desc" placeholder="e.g. A SaaS tool that helps e-commerce brands automate their customer support with AI chatbots..." rows="3"></textarea>
+    </div>
+
+    <div class="options-row">
+      <div>
+        <label class="field-label">Style</label>
+        <div class="pill-group" id="style-pills">
+          <div class="pill active" data-val="catchy">Catchy</div>
+          <div class="pill" data-val="professional">Pro</div>
+          <div class="pill" data-val="minimal">Minimal</div>
+          <div class="pill" data-val="playful">Playful</div>
+          <div class="pill" data-val="techy">Techy</div>
+          <div class="pill" data-val="bold">Bold</div>
+        </div>
       </div>
-      <div class="pr-text">
-        <div class="pr-title">Hold $DOMRUSH → Unlock Premium</div>
-        <div class="pr-desc">30 results · availability check · unlimited searches</div>
+      <div>
+        <label class="field-label">Extensions</label>
+        <div class="pill-group" id="ext-pills">
+          <div class="pill active" data-val=".com">.com</div>
+          <div class="pill active" data-val=".io">.io</div>
+          <div class="pill" data-val=".co">.co</div>
+          <div class="pill" data-val=".app">.app</div>
+          <div class="pill" data-val=".ai">.ai</div>
+          <div class="pill" data-val=".xyz">.xyz</div>
+          <div class="pill" data-val=".dev">.dev</div>
+          <div class="pill" data-val=".gg">.gg</div>
+        </div>
       </div>
     </div>
-    <button class="btn-upgrade" onclick="openPremiumModal('upgrade')">Connect →</button>
+
+    <div class="field-group">
+      <label class="field-label">Keywords to include <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:10px;color:var(--g300)">(optional)</span></label>
+      <input type="text" id="keywords" placeholder="e.g. swift, flow, boost"/>
+    </div>
+
+    <div class="premium-row" id="premium-teaser" onclick="openPremiumModal('upgrade')" style="cursor:pointer">
+      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+        <div style="width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="pr-text">
+          <div class="pr-title">Hold $DOMRUSH → Unlock Premium</div>
+          <div class="pr-desc">30 results · availability check · unlimited searches</div>
+        </div>
+      </div>
+      <button class="btn-upgrade" onclick="openPremiumModal('upgrade')">Connect →</button>
+    </div>
+
+    <button class="btn-generate" id="btn-gen" onclick="generate()">Generate Domain Names →</button>
   </div>
 
-  <button class="btn-generate" id="btn-gen" onclick="generate()">
-    Generate Domain Names →
-  </button>
-</div>
+  <!-- RESULTS -->
+  <div class="results-wrap" id="results-wrap" style="display:none">
+    <div class="results-header">
+      <span class="results-label">Results</span>
+      <span class="count-pill" id="count-pill">0</span>
+    </div>
+    <div class="domain-list" id="domain-list"></div>
+    <div id="blur-cta" style="display:none;text-align:center;padding:1.5rem 0 0">
+      <p style="font-size:13px;color:var(--g500);margin-bottom:0.75rem">🔒 <strong>5 more results</strong> hidden — unlock with Premium</p>
+      <button class="btn-generate" style="max-width:260px;margin:0 auto;display:block;padding:0.7rem 1.5rem;font-size:0.875rem" onclick="openPremiumModal('upgrade')">Get Premium for Full Access</button>
+    </div>
+  </div>
 
-<!-- RESULTS -->
-<div class="results-wrap" id="results-wrap" style="display:none">
-  <div class="results-header">
-    <span class="results-label">Results</span>
-    <span class="count-pill" id="count-pill">0</span>
+</div><!-- /page-home -->
+
+<!-- ══════════════ ROADMAP PAGE ══════════════ -->
+<div class="page" id="page-roadmap">
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="page-eyebrow">Product Roadmap</div>
+      <h2 class="page-title">Building the <span class="italic">future</span><br/>of domain naming</h2>
+      <p class="page-subtitle">From beta launch to full ecosystem — here's where DomRush is headed, starting May 2026.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">May</div>
+        <div class="stat-label">2026 Launch Month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">$DOMRUSH</div>
+        <div class="stat-label">Live on Solana</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">30+</div>
+        <div class="stat-label">AI Suggestions/Search</div>
+      </div>
+    </div>
+
+    <div class="timeline">
+
+      <!-- WEEK 1 -->
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-date">May 1–7, 2026</div>
+        <div class="tl-card highlight">
+          <span class="tl-tag live">✦ Live Now</span>
+          <div class="tl-title">Website Beta Launch</div>
+          <div class="tl-desc">DomRush.xyz goes live with the core AI domain generator. Users can search up to 3 times/day for free, with Google Sign-In for account management. The interface supports style selection, TLD filters, keyword hints, and 10 results per query for free tier.</div>
+          <div class="tl-features">
+            <span class="tl-feat">AI Domain Generator</span>
+            <span class="tl-feat">Google OAuth</span>
+            <span class="tl-feat">Style + TLD Filters</span>
+            <span class="tl-feat">Free Tier (3/day)</span>
+            <span class="tl-feat">Namecheap Integration</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 2 -->
+      <div class="tl-item">
+        <div class="tl-dot milestone"></div>
+        <div class="tl-date">May 8–14, 2026</div>
+        <div class="tl-card highlight">
+          <span class="tl-tag live">⚡ Launching</span>
+          <div class="tl-title">$DOMRUSH Token Market Launch on EasyA Kickstart</div>
+          <div class="tl-desc">The $DOMRUSH token officially launches on <strong>kickstart.easya.io</strong> — a curated Solana launchpad for high-quality Web3 projects. Early supporters can acquire $DOMRUSH tokens to unlock lifetime Premium access. Token-gated features activate immediately on wallet connect with ≥10,000 $DOMRUSH.</div>
+          <div class="tl-features">
+            <span class="tl-feat">Token Public Sale</span>
+            <span class="tl-feat">Phantom Wallet Connect</span>
+            <span class="tl-feat">Token-Gated Premium</span>
+            <span class="tl-feat">Jupiter Liquidity Pool</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 3 -->
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-date">May 15–21, 2026</div>
+        <div class="tl-card upcoming">
+          <span class="tl-tag soon">Coming Soon</span>
+          <div class="tl-title">Full Feature Integration</div>
+          <div class="tl-desc">Premium users get the complete suite: real-time WHOIS availability checking, 30 results per search, search history with saved collections, CSV export, and a domain shortlist builder. The search algorithm gets smarter with industry-specific naming models.</div>
+          <div class="tl-features">
+            <span class="tl-feat">WHOIS Availability</span>
+            <span class="tl-feat">30 Results/Search</span>
+            <span class="tl-feat">Search History</span>
+            <span class="tl-feat">CSV Export</span>
+            <span class="tl-feat">Saved Collections</span>
+            <span class="tl-feat">Unlimited Searches</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WEEK 4 -->
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-date">May 22–31, 2026</div>
+        <div class="tl-card upcoming">
+          <span class="tl-tag soon">Coming Soon</span>
+          <div class="tl-title">Strategic Partnerships & Ecosystem Growth</div>
+          <div class="tl-desc">DomRush formalizes integrations with domain registrars, DNS providers, and Web3 platforms. Affiliate deals go live with Namecheap and Cloudflare. A referral program launches for $DOMRUSH holders — invite friends, earn tokens. Community governance proposals open for top holders.</div>
+          <div class="tl-features">
+            <span class="tl-feat">Registrar Affiliates</span>
+            <span class="tl-feat">Referral Program</span>
+            <span class="tl-feat">Community Governance</span>
+            <span class="tl-feat">API Beta Access</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUNE + -->
+      <div class="tl-item">
+        <div class="tl-dot future"></div>
+        <div class="tl-date">June 2026 & Beyond</div>
+        <div class="tl-card">
+          <span class="tl-tag planned">Planned</span>
+          <div class="tl-title">Platform Expansion & API</div>
+          <div class="tl-desc">A public API lets developers embed DomRush suggestions into their own tools and startup generators. Mobile-optimized PWA, multi-language support, domain auction integration, and a brand kit generator (logo + color palette + domain bundle) round out the full product vision.</div>
+          <div class="tl-features">
+            <span class="tl-feat">Public API</span>
+            <span class="tl-feat">Mobile PWA</span>
+            <span class="tl-feat">Brand Kit Generator</span>
+            <span class="tl-feat">Domain Auctions</span>
+            <span class="tl-feat">Multi-language</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /timeline -->
   </div>
-  <div class="domain-list" id="domain-list"></div>
-  <div id="blur-cta" style="display:none;text-align:center;padding:1.5rem 0 0">
-    <p style="font-size:13px;color:var(--g500);margin-bottom:0.75rem">🔒 <strong>5 more results</strong> hidden — unlock with Premium</p>
-    <button class="btn-generate" style="max-width:260px;margin:0 auto;display:block;padding:0.7rem 1.5rem;font-size:0.875rem" onclick="openPremiumModal('upgrade')">Get Premium for Full Access</button>
+</div><!-- /page-roadmap -->
+
+<!-- ══════════════ PARTNERS PAGE ══════════════ -->
+<div class="page" id="page-partners">
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="page-eyebrow">Potential Partnerships</div>
+      <h2 class="page-title">Companies we'd <span class="italic">love</span><br/>to work with</h2>
+      <p class="page-subtitle">DomRush is actively seeking strategic partnerships across domain registrars, AI infrastructure, Web3 platforms, and startup ecosystems. Here are our ideal collaborators.</p>
+    </div>
+
+    <!-- DOMAIN & REGISTRAR -->
+    <div class="section-divider">
+      <div class="sd-line"></div>
+      <div class="sd-label">Domain Registrars & DNS</div>
+      <div class="sd-line"></div>
+    </div>
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0f7ff">🟠</div>
+          <div>
+            <div class="partner-name">Namecheap</div>
+            <div class="partner-type">Domain Registrar · Affiliate</div>
+          </div>
+        </div>
+        <div class="partner-desc">The world's second-largest domain registrar with 18M+ domains under management. Namecheap's robust API and affiliate program make it an ideal first-party checkout partner for DomRush results.</div>
+        <div class="partner-why">💡 "Check Availability" links already point to Namecheap — formalizing this into an affiliate deal creates revenue and a seamless user path from idea to purchase.</div>
+        <div class="partner-tags"><span class="p-tag">Affiliate Rev-Share</span><span class="p-tag">API Integration</span><span class="p-tag">Co-marketing</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fff7f0">🌐</div>
+          <div>
+            <div class="partner-name">Cloudflare</div>
+            <div class="partner-type">DNS · Registrar · CDN</div>
+          </div>
+        </div>
+        <div class="partner-desc">Cloudflare Registrar offers domains at cost price with no markup — a huge selling point for budget-conscious founders. Their DNS and CDN stack pairs perfectly with the startup audience DomRush serves.</div>
+        <div class="partner-why">💡 Integrating Cloudflare's Registrar API lets us surface true at-cost pricing alongside each suggestion, differentiating DomRush from competitors showing inflated prices.</div>
+        <div class="partner-tags"><span class="p-tag">Price Transparency</span><span class="p-tag">DNS API</span><span class="p-tag">Startup Audience</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0fff4">🔵</div>
+          <div>
+            <div class="partner-name">GoDaddy</div>
+            <div class="partner-type">Domain Registrar · Marketplace</div>
+          </div>
+        </div>
+        <div class="partner-desc">GoDaddy's domain aftermarket and auction platform hosts millions of expired and premium domains. A DomRush × GoDaddy integration could surface premium domain alternatives alongside AI-generated suggestions.</div>
+        <div class="partner-why">💡 When all AI-generated names are taken, surfacing GoDaddy aftermarket listings keeps users engaged and generates high-value affiliate commissions on premium domain sales.</div>
+        <div class="partner-tags"><span class="p-tag">Aftermarket Domains</span><span class="p-tag">Premium Listings</span><span class="p-tag">Auction Integration</span></div>
+      </div>
+
+    </div>
+
+    <!-- AI & TECH -->
+    <div class="section-divider">
+      <div class="sd-line"></div>
+      <div class="sd-label">AI & Technology Infrastructure</div>
+      <div class="sd-line"></div>
+    </div>
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f5f3ff">🤖</div>
+          <div>
+            <div class="partner-name">Anthropic</div>
+            <div class="partner-type">AI Foundation Model</div>
+          </div>
+        </div>
+        <div class="partner-desc">Anthropic's Claude models power DomRush's domain generation engine. As a core infrastructure provider, a deeper partnership could include API credits, early model access, and co-marketing as a Claude-powered startup tool.</div>
+        <div class="partner-why">💡 DomRush is a showcase of what Claude can do for creative naming tasks — ideal for Anthropic's "built with Claude" showcase program and developer success stories.</div>
+        <div class="partner-tags"><span class="p-tag">API Credits Program</span><span class="p-tag">Showcase Partner</span><span class="p-tag">Early Access</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0fdf4">⚡</div>
+          <div>
+            <div class="partner-name">Vercel</div>
+            <div class="partner-type">Cloud Deployment · Edge</div>
+          </div>
+        </div>
+        <div class="partner-desc">Vercel powers the fastest web applications with edge deployment and serverless functions. As DomRush's hosting platform, a partnership enables faster API routes for WHOIS checks, A/B testing infrastructure, and startup program discounts.</div>
+        <div class="partner-why">💡 Vercel's "Ship faster" ethos perfectly matches the DomRush brand. A co-branded "From idea to live domain in 60 seconds" campaign would resonate with both audiences.</div>
+        <div class="partner-tags"><span class="p-tag">Startup Program</span><span class="p-tag">Edge Functions</span><span class="p-tag">Co-branding</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fff1f0">🔴</div>
+          <div>
+            <div class="partner-name">Supabase</div>
+            <div class="partner-type">Backend-as-a-Service · Database</div>
+          </div>
+        </div>
+        <div class="partner-desc">Supabase provides the open-source Firebase alternative used by thousands of startups. For DomRush's backend — storing search history, user accounts, and premium verification — Supabase offers a developer-friendly stack with generous free tiers.</div>
+        <div class="partner-why">💡 Both DomRush and Supabase target technical founders. A mutual showcase in each other's directories and documentation builds qualified, overlapping audiences.</div>
+        <div class="partner-tags"><span class="p-tag">Database Backend</span><span class="p-tag">Auth Integration</span><span class="p-tag">Founder Audience</span></div>
+      </div>
+
+    </div>
+
+    <!-- WEB3 & SOLANA -->
+    <div class="section-divider">
+      <div class="sd-line"></div>
+      <div class="sd-label">Web3 & Solana Ecosystem</div>
+      <div class="sd-line"></div>
+    </div>
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fdf4ff">💜</div>
+          <div>
+            <div class="partner-name">Phantom</div>
+            <div class="partner-type">Solana Wallet · Web3 Auth</div>
+          </div>
+        </div>
+        <div class="partner-desc">Phantom is the leading Solana wallet with 10M+ users. DomRush's token-gated Premium system already integrates Phantom for wallet connection and $DOMRUSH balance verification — making this a natural deepened partnership.</div>
+        <div class="partner-why">💡 A Phantom × DomRush co-promotion ("tools Phantom users love") exposes DomRush to millions of active Solana users who are prime candidates for Web3-native products.</div>
+        <div class="partner-tags"><span class="p-tag">Wallet Integration</span><span class="p-tag">User Promotion</span><span class="p-tag">Token Verification</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0fdf4">🟢</div>
+          <div>
+            <div class="partner-name">Jupiter Exchange</div>
+            <div class="partner-type">Solana DEX Aggregator</div>
+          </div>
+        </div>
+        <div class="partner-desc">Jupiter is Solana's largest DEX aggregator, routing $DOMRUSH token trades with the best liquidity. DomRush already links users to Jupiter to purchase tokens — a formal partnership unlocks co-marketing and token listing promotions.</div>
+        <div class="partner-why">💡 Being featured in Jupiter's "New Token Spotlight" and their ecosystem directory drives organic token demand, supporting Premium adoption without paid advertising.</div>
+        <div class="partner-tags"><span class="p-tag">Token Liquidity</span><span class="p-tag">Ecosystem Listing</span><span class="p-tag">Co-marketing</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fffbf0">🟡</div>
+          <div>
+            <div class="partner-name">EasyA</div>
+            <div class="partner-type">Web3 Launchpad · Education</div>
+          </div>
+        </div>
+        <div class="partner-desc">EasyA runs Kickstart — the curated Solana token launchpad hosting DomRush's $DOMRUSH token sale. Beyond the launch, EasyA's 500K+ developer community and university hackathon network are a prime distribution channel for DomRush.</div>
+        <div class="partner-why">💡 EasyA hackathon participants build products and need domain names. A DomRush integration as the official domain tool for EasyA events creates recurring, high-intent usage.</div>
+        <div class="partner-tags"><span class="p-tag">Token Launchpad</span><span class="p-tag">Hackathon Partner</span><span class="p-tag">Developer Network</span></div>
+      </div>
+
+    </div>
+
+    <!-- STARTUP ECOSYSTEM -->
+    <div class="section-divider">
+      <div class="sd-line"></div>
+      <div class="sd-label">Startup Ecosystem & Distribution</div>
+      <div class="sd-line"></div>
+    </div>
+
+    <div class="partners-grid">
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fff7f0">🚀</div>
+          <div>
+            <div class="partner-name">Product Hunt</div>
+            <div class="partner-type">Product Discovery Platform</div>
+          </div>
+        </div>
+        <div class="partner-desc">Product Hunt is where startup tools get their initial traction. A launch on Product Hunt, combined with a DomRush Golden Kitty sponsorship campaign, reaches hundreds of thousands of founders, makers, and early adopters actively looking for productivity tools.</div>
+        <div class="partner-why">💡 Every Product Hunt launch needs a domain name. A DomRush banner placement on Product Hunt's homepage during launches creates perfectly timed, high-intent exposure to ideal users.</div>
+        <div class="partner-tags"><span class="p-tag">Launch Platform</span><span class="p-tag">Contextual Placement</span><span class="p-tag">Maker Community</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0f7ff">🦁</div>
+          <div>
+            <div class="partner-name">Notion</div>
+            <div class="partner-type">Productivity · Startup OS</div>
+          </div>
+        </div>
+        <div class="partner-desc">Notion is the go-to workspace for early-stage startups. A DomRush widget or Notion integration lets founders generate domain ideas without leaving their workspace — embedded directly in product planning docs and startup templates.</div>
+        <div class="partner-why">💡 Notion's template gallery reaches millions of startup teams. A "Launch Your Startup" template bundle featuring DomRush puts us in the hands of founders at the exact moment they need a domain.</div>
+        <div class="partner-tags"><span class="p-tag">Template Integration</span><span class="p-tag">Embedded Widget</span><span class="p-tag">5M+ Users Reach</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f5fff5">💼</div>
+          <div>
+            <div class="partner-name">Y Combinator</div>
+            <div class="partner-type">Startup Accelerator</div>
+          </div>
+        </div>
+        <div class="partner-desc">YC-backed startups number in the thousands, each launching with a new product and needing a domain name. DomRush's AI-powered approach fits YC's "move fast" ethos — a tool deal or startup resources partnership would place DomRush in YC's recommended tools list.</div>
+        <div class="partner-why">💡 YC's trusted tools and resources section is one of the highest-quality sources of startup founder traffic. Being listed here signals credibility to the global founder community.</div>
+        <div class="partner-tags"><span class="p-tag">Tools Partnership</span><span class="p-tag">Batch Sponsorship</span><span class="p-tag">Founder Trust</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fff0f5">🎨</div>
+          <div>
+            <div class="partner-name">Figma / Canva</div>
+            <div class="partner-type">Design Tools · Brand Creation</div>
+          </div>
+        </div>
+        <div class="partner-desc">Design tools like Figma and Canva are where startup brands are born. A DomRush plugin for Figma or integration in Canva's "Start a Brand" flow lets designers check domain availability while creating brand identities — closing the loop from design to deployment.</div>
+        <div class="partner-why">💡 "You're designing a logo — check if the domain is available" is a perfect in-context moment. A DomRush plugin bridges brand creation and domain acquisition in one workflow.</div>
+        <div class="partner-tags"><span class="p-tag">Plugin Marketplace</span><span class="p-tag">Brand Workflow</span><span class="p-tag">Design Community</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#f0f9ff">🌊</div>
+          <div>
+            <div class="partner-name">Framer / Webflow</div>
+            <div class="partner-type">No-Code Website Builders</div>
+          </div>
+        </div>
+        <div class="partner-desc">Framer and Webflow power the websites of thousands of startups and agencies. Both platforms require a custom domain during setup — a DomRush integration at the "Connect Domain" step means users can generate and purchase a domain without leaving the builder.</div>
+        <div class="partner-why">💡 Domain setup is a friction point in every website builder onboarding. DomRush turning that friction into a delightful AI experience creates value for both the platform and the user.</div>
+        <div class="partner-tags"><span class="p-tag">Onboarding Integration</span><span class="p-tag">No-Code Audience</span><span class="p-tag">White-label API</span></div>
+      </div>
+
+      <div class="partner-card">
+        <div class="partner-logo-area">
+          <div class="partner-icon" style="background:#fff5f5">📧</div>
+          <div>
+            <div class="partner-name">Beehiiv / Substack</div>
+            <div class="partner-type">Newsletter & Creator Platforms</div>
+          </div>
+        </div>
+        <div class="partner-desc">The creator economy is booming — newsletters, courses, and personal brands all need memorable domain names. Beehiiv and Substack creators represent a massive, underserved market for domain naming help beyond typical SaaS startups.</div>
+        <div class="partner-why">💡 A "Start Your Newsletter Brand" flow featuring DomRush reaches the creator economy, expanding DomRush's addressable market beyond technical founders into a 50M+ creator audience.</div>
+        <div class="partner-tags"><span class="p-tag">Creator Economy</span><span class="p-tag">Newsletter Audience</span><span class="p-tag">Personal Brand</span></div>
+      </div>
+
+    </div>
+
+    <div style="background:var(--black);border-radius:var(--r-2xl);padding:2rem;text-align:center;margin-top:2.5rem">
+      <div style="font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.75rem">Interested in partnering?</div>
+      <div style="font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;font-style:italic;color:white;margin-bottom:0.5rem">Let's build together</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:1.25rem">DomRush is open to registrar integrations, co-marketing, API deals, and ecosystem partnerships.</div>
+      <a href="mailto:hello@domrush.xyz" style="display:inline-flex;align-items:center;gap:8px;background:#e2b96a;color:#0d0d0b;padding:0.75rem 1.5rem;border-radius:999px;font-size:13px;font-weight:600;text-decoration:none;transition:all 0.15s" onmouseover="this.style.background='#f0cc88'" onmouseout="this.style.background='#e2b96a'">
+        hello@domrush.xyz →
+      </a>
+      <div style="margin-top:1rem">
+        <a href="https://x.com/domrushxyz" target="_blank" rel="noopener" style="font-size:12px;color:rgba(255,255,255,0.3);text-decoration:none">Or DM us on X @domrushxyz</a>
+      </div>
+    </div>
+
   </div>
-</div>
+</div><!-- /page-partners -->
 
 <footer>
   <strong style="font-family:'Fraunces',serif;font-weight:400;font-style:italic">DomRush.xyz</strong><br/>
   Built on Solana · $DOMRUSH · Results are suggestions only<br/>
-  <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a>
+  <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a> · <a href="https://x.com/domrushxyz" target="_blank">@domrushxyz</a>
 </footer>
 
 <!-- PREMIUM / LOGIN MODAL -->
 <div class="modal-overlay hidden" id="modal-overlay" onclick="closeModalIfBg(event)">
   <div class="modal">
-
-    <!-- ── UPGRADE VIEW ── -->
     <div id="modal-login-view">
       <div class="modal-header">
         <div class="shimmer-line"></div>
         <button class="modal-close" onclick="closeModal()">✕</button>
-        <div class="token-badge">
-          <span class="token-badge-dot"></span>
-          $DOMRUSH · Solana
-        </div>
+        <div class="token-badge"><span class="token-badge-dot"></span>$DOMRUSH · Solana</div>
         <div class="modal-title">Token-gated<br/>Premium Access</div>
         <div class="modal-sub">Hold $DOMRUSH tokens in your Solana wallet to unlock all premium features — no subscription, no credit card.</div>
       </div>
-
       <div class="modal-body">
         <div class="token-requirement">
           <div class="tr-label">Minimum to hold</div>
           <div class="tr-row">
-            <div>
-              <div class="tr-amount">10,000</div>
-              <div class="tr-ticker">$DOMRUSH tokens</div>
-            </div>
+            <div><div class="tr-amount">10,000</div><div class="tr-ticker">$DOMRUSH tokens</div></div>
             <div class="tr-desc">Hold in any Solana wallet. Access verified on connect.</div>
           </div>
         </div>
-
         <div class="features-grid">
-          <div class="feat-row">
-            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
-            <div class="feat-text"><strong>30 domain suggestions</strong> per search</div>
-          </div>
-          <div class="feat-row">
-            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
-            <div class="feat-text"><strong>Real availability check</strong> via WHOIS</div>
-          </div>
-          <div class="feat-row">
-            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
-            <div class="feat-text"><strong>Unlimited searches</strong> — no daily cap</div>
-          </div>
-          <div class="feat-row">
-            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
-            <div class="feat-text"><strong>Saved history</strong> — access past results</div>
-          </div>
-          <div class="feat-row">
-            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
-            <div class="feat-text"><strong>Export to CSV</strong> — download your list</div>
-          </div>
+          <div class="feat-row"><div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="feat-text"><strong>30 domain suggestions</strong> per search</div></div>
+          <div class="feat-row"><div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="feat-text"><strong>Real availability check</strong> via WHOIS</div></div>
+          <div class="feat-row"><div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="feat-text"><strong>Unlimited searches</strong> — no daily cap</div></div>
+          <div class="feat-row"><div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="feat-text"><strong>Saved history</strong> — access past results</div></div>
+          <div class="feat-row"><div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="feat-text"><strong>Export to CSV</strong> — download your list</div></div>
         </div>
-
         <hr class="modal-divider"/>
-
         <button class="btn-connect-wallet" onclick="connectWallet()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><circle cx="16" cy="14" r="1" fill="currentColor"/></svg>
           Connect Solana Wallet
         </button>
-
         <button class="btn-google-signin" onclick="signInWithGoogle()">
           <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
           Sign in with Google (free tier)
@@ -548,8 +799,6 @@ footer a:hover{color:var(--black)}
         <div class="modal-note">Wallet balance is verified on-chain · No custody · No private keys shared<br/>Don't have $DOMRUSH? <span style="color:#e2b96a;cursor:pointer" onclick="buyToken()">Buy on Jupiter →</span></div>
       </div>
     </div>
-
-    <!-- ── ACCOUNT VIEW ── -->
     <div id="modal-account-view" style="display:none">
       <div class="modal-header">
         <div class="shimmer-line"></div>
@@ -572,7 +821,6 @@ footer a:hover{color:var(--black)}
         <button onclick="signOut()" style="width:100%;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:0.7rem;font-size:13px;color:rgba(255,255,255,0.4);cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.15s" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">Sign out</button>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -587,46 +835,62 @@ let isPremium = false;
 let usesLeft = 3;
 let modalMode = 'upgrade';
 
-// ── EXAMPLES (30+) ──
+// ── PAGE NAVIGATION ──
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));
+  const nl = document.getElementById('nav-'+name);
+  if(nl) nl.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── EXAMPLES (varied, 40+) ──
 const EXAMPLES = [
-  "A food delivery app for healthy meals",
+  "AI-powered resume builder for Gen Z",
+  "Food delivery app for healthy office meals",
   "SaaS tool for freelancers to track invoices",
-  "AI-powered resume builder",
   "Online marketplace for handmade crafts",
   "Fitness coaching app with live trainers",
   "Dog walking and pet sitting platform",
   "Legal document generator for startups",
-  "Smart budgeting app for Gen Z",
+  "Smart budgeting app for college students",
   "B2B CRM for small sales teams",
-  "Crypto portfolio tracker",
-  "No-code website builder",
-  "Mental health journaling app",
-  "Online tutoring marketplace for STEM",
-  "AI meeting notes & summary tool",
-  "Project management for remote teams",
-  "Social media scheduling tool",
-  "E-commerce analytics dashboard",
-  "Email marketing platform for creators",
-  "Virtual interior design consultation",
-  "Subscription box for book lovers",
-  "API monitoring and uptime alerts",
-  "Car maintenance reminder app",
-  "Travel itinerary planner with AI",
-  "Gamified language learning app",
-  "Influencer marketing platform",
-  "Open-source code review tool",
-  "Digital business card app",
-  "Recruitment ATS for startups",
-  "Real estate listing aggregator",
-  "Podcast discovery and player app",
-  "Home recipe and meal prep planner",
-  "On-demand laundry and dry cleaning",
-  "Kid-safe YouTube alternative",
-  "Productivity timer for deep work",
-  "Blockchain-based voting system",
+  "Crypto portfolio tracker with DeFi analytics",
+  "No-code website builder for restaurants",
+  "Mental health journaling app with AI prompts",
+  "Online tutoring marketplace for STEM subjects",
+  "AI meeting notes and action item tracker",
+  "Project management tool for remote agencies",
+  "Social media scheduling tool for creators",
+  "E-commerce analytics dashboard for Shopify",
+  "Email marketing for independent musicians",
+  "Virtual interior design consultation platform",
+  "Subscription box curation service for readers",
+  "API monitoring and uptime alerting service",
+  "Car maintenance reminder and service booking",
+  "Travel itinerary planner with local guides",
+  "Gamified language learning for adults",
+  "Influencer marketing platform for micro-creators",
+  "Open-source code review tool for teams",
+  "Digital business card with NFC support",
+  "Recruitment ATS for early-stage startups",
+  "Real estate listing aggregator for renters",
+  "Podcast discovery engine with mood filters",
+  "Home recipe planner and grocery delivery",
+  "On-demand laundry and dry cleaning service",
+  "Kid-safe video platform with parental controls",
+  "Deep work timer and focus session tracker",
+  "Blockchain-based voting system for DAOs",
+  "AI logo generator for solopreneurs",
+  "Peer-to-peer skill swap marketplace",
+  "Wedding planning and vendor booking platform",
+  "Local event discovery app for students",
+  "Smart home energy monitoring dashboard",
+  "B2B SaaS for warehouse inventory tracking",
+  "Freelance tax and accounting helper",
 ];
 
-// render example chips
 const scroll = document.getElementById('examples-scroll');
 EXAMPLES.forEach(ex => {
   const chip = document.createElement('div');
@@ -635,7 +899,6 @@ EXAMPLES.forEach(ex => {
   chip.onclick = () => {
     document.getElementById('product-desc').value = ex;
     document.getElementById('product-desc').focus();
-    // scroll to input
     document.querySelector('.search-card').scrollIntoView({behavior:'smooth',block:'start'});
   };
   scroll.appendChild(chip);
@@ -646,7 +909,7 @@ document.querySelectorAll('.pill-group').forEach(g => {
   const single = g.id === 'style-pills';
   g.querySelectorAll('.pill').forEach(p => {
     p.addEventListener('click', () => {
-      if (single) { g.querySelectorAll('.pill').forEach(x=>x.classList.remove('active')); p.classList.add('active'); }
+      if(single){g.querySelectorAll('.pill').forEach(x=>x.classList.remove('active'));p.classList.add('active');}
       else p.classList.toggle('active');
     });
   });
@@ -655,17 +918,16 @@ function getActive(id){ return [...document.querySelectorAll(`#${id} .pill.activ
 
 // ── USES COUNTER ──
 function updateUsesBar(){
-  if(user){ document.getElementById('uses-bar').style.display='none'; return; }
-  const el = document.getElementById('uses-left');
-  el.textContent = usesLeft;
-  if(usesLeft<=0) el.style.color='#dc2626';
+  if(user){document.getElementById('uses-bar').style.display='none';return;}
+  document.getElementById('uses-left').textContent = usesLeft;
+  if(usesLeft<=0) document.getElementById('uses-left').style.color='#dc2626';
 }
 
 // ── GENERATE ──
 async function generate(){
   const desc = document.getElementById('product-desc').value.trim();
-  if(!desc){ document.getElementById('product-desc').focus(); showToast('Please describe your product first'); return; }
-  if(!user && usesLeft <= 0){ openPremiumModal('upgrade'); return; }
+  if(!desc){document.getElementById('product-desc').focus();showToast('Please describe your product first');return;}
+  if(!user && usesLeft<=0){openPremiumModal('upgrade');return;}
 
   const style = getActive('style-pills')[0]||'catchy';
   const exts  = getActive('ext-pills');
@@ -673,14 +935,15 @@ async function generate(){
   const count = isPremium ? 30 : 10;
   const btn   = document.getElementById('btn-gen');
 
-  btn.disabled=true; btn.textContent='Generating…';
+  btn.disabled=true;btn.textContent='Generating…';
   showLoading();
-  if(!user){ usesLeft--; updateUsesBar(); }
+  if(!user){usesLeft--;updateUsesBar();}
 
   const extList = exts.length ? exts.join(', ') : '.com, .io';
   const kwNote  = kw ? `\nKeywords to incorporate: ${kw}.` : '';
 
-  const prompt = `You are a world-class domain naming expert and brand strategist.
+  const prompt = `You are a world-class domain naming expert and brand strategist with deep knowledge of startup naming, linguistics, and brandable word creation.
+
 A user described their product: "${desc}"
 
 Generate exactly ${count} creative, memorable, brandable domain name suggestions.
@@ -688,34 +951,35 @@ Style: ${style}.
 Preferred TLDs: ${extList}.${kwNote}
 
 Rules:
-- Each domain must be unique and different from the others
-- Mix approaches: compound words, portmanteaus, invented words, action words, metaphors, abbreviations
-- Vary TLDs across the preferred list
-- Ideally under 15 characters total
-- No hyphens. No numbers unless very natural
+- Each domain must be unique and meaningfully different from the others
+- Mix diverse approaches: compound words, portmanteaus, invented/coined words, metaphors, verbs-as-brands, animals, elements, foreign words anglicized, abbreviations, alliteration
+- Vary TLDs across the preferred list — don't only use .com
+- Ideally under 15 characters total (name + extension)
+- Absolutely no hyphens. Avoid numbers unless extremely natural (e.g. "base64")
 - Names must be easy to spell when heard out loud
-- 20% of results can be creative/unexpected outside-the-box names
+- 20–25% of results should be bold, creative, outside-the-box names that surprise
+- Include some short punchy 4–6 char names and some descriptive 8–12 char names
+- tags: "short" for ≤8 chars total, "creative" for invented/coined words, "hot" for trend-forward names — max 2 tags per domain, many domains have 0
 
-Respond ONLY with a valid JSON array, no markdown, no comments, no extra text:
-[{"name":"domain.tld","why":"One punchy sentence why it works.","tags":[]},...]
-tags can include: "short", "creative", "hot" — max 2 per domain. Many domains will have empty tags [].`;
+Respond ONLY with a valid JSON array, no markdown, no preamble, no trailing text:
+[{"name":"domain.tld","why":"One punchy sentence why it works for this specific product.","tags":[]},...]`;
 
   try {
     const res = await fetch(API_URL,{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:2000,messages:[{role:'user',content:prompt}]})
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:3000,messages:[{role:'user',content:prompt}]})
     });
     const data = await res.json();
     const text = (data.content||[]).map(b=>b.text||'').join('');
     const clean = text.replace(/```json|```/g,'').trim();
     const domains = JSON.parse(clean);
     renderDomains(domains);
-  } catch(e) {
+  } catch(e){
     document.getElementById('domain-list').innerHTML=`<div class="empty">⚠️ Something went wrong. Please try again.<br/><small style="font-size:10px;color:var(--g400)">${e.message}</small></div>`;
     document.getElementById('results-wrap').style.display='';
   } finally {
-    btn.disabled=false; btn.textContent='Generate Domain Names →';
+    btn.disabled=false;btn.textContent='Generate Domain Names →';
   }
 }
 
@@ -730,8 +994,7 @@ function renderDomains(domains){
   const list = document.getElementById('domain-list');
   document.getElementById('count-pill').textContent = domains.length;
   list.innerHTML='';
-
-  if(!domains.length){ list.innerHTML='<div class="empty">No results. Try a different description.</div>'; return; }
+  if(!domains.length){list.innerHTML='<div class="empty">No results. Try a different description.</div>';return;}
 
   const visibleCount = isPremium ? domains.length : Math.min(10, domains.length);
   const hiddenCount  = domains.length - visibleCount;
@@ -740,6 +1003,8 @@ function renderDomains(domains){
     short:'<span class="badge b-short">Short</span>',
     creative:'<span class="badge b-creative">Creative</span>',
     hot:'<span class="badge b-hot">Trending</span>',
+    brandable:'<span class="badge b-brandable">Brandable</span>',
+    punchy:'<span class="badge b-punchy">Punchy</span>',
   };
 
   list.innerHTML = domains.map((d,i)=>{
@@ -763,150 +1028,107 @@ function renderDomains(domains){
     </div>`;
   }).join('');
 
-  if(!isPremium && hiddenCount > 0){
+  if(!isPremium && hiddenCount>0){
     document.getElementById('blur-cta').style.display='block';
-    document.getElementById('blur-cta').querySelector('p').innerHTML = `🔒 <strong>${hiddenCount} more results</strong> hidden — unlock with Premium`;
+    document.getElementById('blur-cta').querySelector('p').innerHTML=`🔒 <strong>${hiddenCount} more results</strong> hidden — unlock with Premium`;
   }
 }
 
 function checkDomain(name){
-  window.open(`https://www.namecheap.com/domains/registration/results/?domain=${encodeURIComponent(name)}`, '_blank');
+  window.open(`https://www.namecheap.com/domains/registration/results/?domain=${encodeURIComponent(name)}`,'_blank');
 }
 
-// Enter key
-document.getElementById('product-desc').addEventListener('keydown', e=>{
-  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); generate(); }
+document.getElementById('product-desc').addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();generate();}
 });
 
 // ── GOOGLE OAUTH ──
-// NOTE: Replace with your actual Google OAuth Client ID from console.cloud.google.com
 const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
 
 function signInWithGoogle(){
-  // Initialize Google Identity Services
-  if(typeof google === 'undefined'){
-    showToast('Google Sign-In loading... please wait');
-    return;
-  }
-  google.accounts.id.initialize({
-    client_id: GOOGLE_CLIENT_ID,
-    callback: handleGoogleCredential,
-    auto_select: false,
-  });
-  google.accounts.id.prompt((notification)=>{
-    if(notification.isNotDisplayed() || notification.isSkippedMoment()){
-      // Fallback: render button manually
-      google.accounts.id.renderButton(
-        document.getElementById('google-btn-container'),
-        {theme:'outline', size:'large', width:'100%', text:'continue_with'}
-      );
+  if(typeof google==='undefined'){showToast('Google Sign-In loading... please wait');return;}
+  google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleCredential,auto_select:false});
+  google.accounts.id.prompt(notification=>{
+    if(notification.isNotDisplayed()||notification.isSkippedMoment()){
+      google.accounts.id.renderButton(document.getElementById('google-btn-container'),{theme:'outline',size:'large',width:'100%',text:'continue_with'});
     }
   });
 }
 
 function handleGoogleCredential(response){
-  // Decode JWT (header.payload.signature)
   try{
     const payload = JSON.parse(atob(response.credential.split('.')[1]));
-    user = {
-      name: payload.name,
-      email: payload.email,
-      avatar: payload.picture,
-      given_name: payload.given_name,
-    };
-    isPremium = false; // set true when you integrate a payment backend
-    usesLeft = 999;
-    updateUI();
-    closeModal();
-    showToast(`Welcome, ${user.given_name}! 🎉`);
-  } catch(e){
-    showToast('Sign-in failed. Please try again.');
-  }
+    user={name:payload.name,email:payload.email,avatar:payload.picture,given_name:payload.given_name};
+    isPremium=false;usesLeft=999;
+    updateUI();closeModal();showToast(`Welcome, ${user.given_name}! 🎉`);
+  } catch(e){showToast('Sign-in failed. Please try again.');}
 }
 
-function signOut(){
-  user = null; isPremium = false; usesLeft = 3;
-  updateUI(); closeModal(); showToast('Signed out');
-}
+function signOut(){user=null;isPremium=false;usesLeft=3;updateUI();closeModal();showToast('Signed out');}
 
 async function connectWallet(){
-  if(typeof window.solana === 'undefined'){
+  if(typeof window.solana==='undefined'){
     showToast('Phantom wallet not found — install Phantom first');
-    setTimeout(()=>window.open('https://phantom.app','_blank'),1200);
-    return;
+    setTimeout(()=>window.open('https://phantom.app','_blank'),1200);return;
   }
   try{
-    const btn = document.querySelector('.btn-connect-wallet');
-    btn.textContent = 'Connecting…'; btn.disabled = true;
-    const resp = await window.solana.connect();
-    const pubkey = resp.publicKey.toString();
-    // Simulate balance check (replace with actual Solana RPC call in production)
-    const shortKey = pubkey.slice(0,4)+'…'+pubkey.slice(-4);
-    isPremium = true;
-    user = user || { name: shortKey, email: pubkey, avatar: '', given_name: shortKey };
-    usesLeft = 999;
-    updateUI(); closeModal();
-    showToast('Wallet connected · Premium unlocked ✓');
-  } catch(e){
-    showToast('Wallet connection cancelled');
-  } finally {
-    const btn = document.querySelector('.btn-connect-wallet');
-    if(btn){ btn.textContent = 'Connect Solana Wallet'; btn.disabled = false; }
-  }
+    const btn=document.querySelector('.btn-connect-wallet');
+    btn.textContent='Connecting…';btn.disabled=true;
+    const resp=await window.solana.connect();
+    const pubkey=resp.publicKey.toString();
+    const shortKey=pubkey.slice(0,4)+'…'+pubkey.slice(-4);
+    isPremium=true;
+    user=user||{name:shortKey,email:pubkey,avatar:'',given_name:shortKey};
+    usesLeft=999;updateUI();closeModal();showToast('Wallet connected · Premium unlocked ✓');
+  } catch(e){showToast('Wallet connection cancelled');}
+  finally{const btn=document.querySelector('.btn-connect-wallet');if(btn){btn.textContent='Connect Solana Wallet';btn.disabled=false;}}
 }
 
-function buyToken(){
-  window.open('https://jup.ag/swap/SOL-DOMRUSH','_blank');
-}
+function buyToken(){window.open('https://jup.ag/swap/SOL-DOMRUSH','_blank');}
 
 function updateUI(){
-  const authEl = document.getElementById('nav-auth');
-  const userEl = document.getElementById('nav-user');
+  const authEl=document.getElementById('nav-auth');
+  const userEl=document.getElementById('nav-user');
   if(user){
-    authEl.style.display='none'; userEl.style.display='';
-    document.getElementById('user-avatar').src = user.avatar;
-    document.getElementById('user-name-short').textContent = user.given_name;
-    document.getElementById('user-tier-badge').textContent = isPremium?'Premium':'Free';
-    document.getElementById('user-tier-badge').className = isPremium?'premium-badge':'free-badge';
-    // hide premium teaser
-    document.getElementById('premium-teaser').style.opacity = isPremium?'0.4':'1';
+    authEl.style.display='none';userEl.style.display='';
+    document.getElementById('user-avatar').src=user.avatar;
+    document.getElementById('user-name-short').textContent=user.given_name;
+    document.getElementById('user-tier-badge').textContent=isPremium?'Premium':'Free';
+    document.getElementById('user-tier-badge').className=isPremium?'premium-badge':'free-badge';
+    document.getElementById('premium-teaser').style.opacity=isPremium?'0.4':'1';
     document.getElementById('uses-bar').style.display='none';
   } else {
-    authEl.style.display=''; userEl.style.display='none';
-    updateUsesBar();
+    authEl.style.display='';userEl.style.display='none';updateUsesBar();
   }
 }
 
 // ── MODAL ──
 function openPremiumModal(mode='upgrade'){
-  modalMode = mode;
+  modalMode=mode;
   document.getElementById('modal-overlay').classList.remove('hidden');
-  const loginView   = document.getElementById('modal-login-view');
-  const accountView = document.getElementById('modal-account-view');
-  if(mode==='account' && user){
-    loginView.style.display='none'; accountView.style.display='';
-    document.getElementById('modal-avatar').src = user.avatar;
-    document.getElementById('modal-fullname').textContent = user.name;
-    document.getElementById('modal-email').textContent = user.email;
-    document.getElementById('modal-plan-name').textContent = isPremium?'Premium ⚡':'Free';
-    document.getElementById('modal-plan-desc').textContent = isPremium?'30 results · Unlimited searches':'10 results · 3 searches/day';
-  } else {
-    loginView.style.display=''; accountView.style.display='none';
-  }
+  const lv=document.getElementById('modal-login-view');
+  const av=document.getElementById('modal-account-view');
+  if(mode==='account'&&user){
+    lv.style.display='none';av.style.display='';
+    document.getElementById('modal-avatar').src=user.avatar;
+    document.getElementById('modal-fullname').textContent=user.name;
+    document.getElementById('modal-email').textContent=user.email;
+    document.getElementById('modal-plan-name').textContent=isPremium?'Premium ⚡':'Free';
+    document.getElementById('modal-plan-desc').textContent=isPremium?'30 results · Unlimited searches':'10 results · 3 searches/day';
+  } else {lv.style.display='';av.style.display='none';}
 }
-function closeModal(){ document.getElementById('modal-overlay').classList.add('hidden'); }
-function closeModalIfBg(e){ if(e.target===document.getElementById('modal-overlay')) closeModal(); }
+function closeModal(){document.getElementById('modal-overlay').classList.add('hidden');}
+function closeModalIfBg(e){if(e.target===document.getElementById('modal-overlay'))closeModal();}
 
 // ── TOAST ──
 let toastTimer;
 function showToast(msg){
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.remove('hidden');
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.remove('hidden');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.add('hidden'), 2800);
+  toastTimer=setTimeout(()=>t.classList.add('hidden'),2800);
 }
 
-// init
 updateUsesBar();
 </script>
 </body>
