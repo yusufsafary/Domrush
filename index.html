@@ -18,6 +18,28 @@
 html{scroll-behavior:smooth}
 body{font-family:'Instrument Sans',sans-serif;background:var(--white);color:var(--black);min-height:100vh;-webkit-font-smoothing:antialiased}
 
+/* ── TICKER STRIP ── */
+.ticker-strip{
+  background:var(--black);color:rgba(255,255,255,0.75);
+  font-size:10.5px;font-weight:500;letter-spacing:0.03em;
+  padding:5px 1.25rem;
+  display:flex;align-items:center;justify-content:center;gap:16px;
+  white-space:nowrap;overflow:hidden;
+}
+.ticker-item{display:flex;align-items:center;gap:6px}
+.ticker-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;display:inline-block;animation:blink 2s ease infinite;flex-shrink:0}
+.ticker-label{color:rgba(255,255,255,0.45)}
+.ticker-value{color:rgba(255,255,255,0.9);font-weight:600}
+.ticker-ca{
+  display:flex;align-items:center;gap:5px;
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
+  border-radius:999px;padding:2px 9px;cursor:pointer;transition:all 0.15s;
+}
+.ticker-ca:hover{background:rgba(255,255,255,0.13);border-color:rgba(255,255,255,0.22)}
+.ca-addr{font-family:monospace;font-size:10px;color:rgba(255,255,255,0.6);letter-spacing:0.02em}
+.ca-copy{font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin-left:2px}
+.ticker-divider{width:1px;height:10px;background:rgba(255,255,255,0.12)}
+
 /* ── NAV ── */
 nav{
   position:sticky;top:0;z-index:200;
@@ -115,7 +137,7 @@ textarea{min-height:72px}
 .domain-list{display:flex;flex-direction:column;gap:0.5rem}
 .domain-card{background:var(--white);border:1px solid var(--g100);border-radius:var(--r-lg);padding:0.875rem 1rem;display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;transition:border-color 0.15s,box-shadow 0.15s;animation:slideUp 0.3s ease both}
 .domain-card:hover{border-color:var(--g300);box-shadow:0 2px 16px rgba(0,0,0,0.05)}
-.domain-card.blurred .domain-name{filter:blur(5px);user-select:none}
+.domain-card.blurred .domain-name{filter:blur(5px);user-select:none} Jun
 .domain-card.blurred .domain-why{filter:blur(3px);user-select:none}
 @keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .dc-left{flex:1;min-width:0}
@@ -212,7 +234,7 @@ textarea{min-height:72px}
 .tr-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
 .tr-amount{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;color:#e2b96a;letter-spacing:-0.02em;line-height:1}
 .tr-ticker{font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);margin-top:3px;letter-spacing:0.06em}
-.tr-desc{font-size:11.5px;color:rgba(255,255,255,0.4);line-height:1.55;text-align:right;max-width:160px}
+.tr-desc{font-size:11.5px;color:rgba(255,255,255,0.4);line-height:1.55;text-align:right;max-width:180px}
 .features-grid{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
 .feat-row{display:flex;align-items:center;gap:10px}
 .feat-check{width:16px;height:16px;border-radius:4px;flex-shrink:0;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);display:flex;align-items:center;justify-content:center}
@@ -250,10 +272,34 @@ footer a:hover{color:var(--black)}
   .partners-grid{grid-template-columns:1fr}
   .stats-row{grid-template-columns:1fr}
   .nav-links .nav-link:nth-child(n+3){display:none}
+  .ticker-strip{gap:8px;font-size:9.5px}
+  .ticker-divider{display:none}
 }
 </style>
 </head>
 <body>
+
+<!-- TICKER STRIP -->
+<div class="ticker-strip">
+  <div class="ticker-item">
+    <span class="ticker-dot"></span>
+    <span class="ticker-label">$DOMRUSH</span>
+    <span class="ticker-value">Live on Solana</span>
+  </div>
+  <div class="ticker-divider"></div>
+  <div class="ticker-item">
+    <span class="ticker-label">CA:</span>
+    <div class="ticker-ca" onclick="copyCA()" title="Click to copy contract address">
+      <span class="ca-addr" id="ca-display">5zkDtD…oercn</span>
+      <span class="ca-copy">copy</span>
+    </div>
+  </div>
+  <div class="ticker-divider"></div>
+  <div class="ticker-item">
+    <span class="ticker-label">Premium from</span>
+    <span class="ticker-value">$20 USD</span>
+  </div>
+</div>
 
 <!-- NAV -->
 <nav>
@@ -348,7 +394,7 @@ footer a:hover{color:var(--black)}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <div class="pr-text">
-          <div class="pr-title">Hold $DOMRUSH → Unlock Premium</div>
+          <div class="pr-title">Hold $DOMRUSH ($20 USD) → Unlock Premium</div>
           <div class="pr-desc">30 results · availability check · unlimited searches</div>
         </div>
       </div>
@@ -399,7 +445,6 @@ footer a:hover{color:var(--black)}
 
     <div class="timeline">
 
-      <!-- WEEK 1 -->
       <div class="tl-item">
         <div class="tl-dot active"></div>
         <div class="tl-date">May 1–7, 2026</div>
@@ -417,24 +462,22 @@ footer a:hover{color:var(--black)}
         </div>
       </div>
 
-      <!-- WEEK 2 -->
       <div class="tl-item">
         <div class="tl-dot milestone"></div>
         <div class="tl-date">May 8–14, 2026</div>
         <div class="tl-card highlight">
           <span class="tl-tag live">⚡ Launching</span>
           <div class="tl-title">$DOMRUSH Token Market Launch on EasyA Kickstart</div>
-          <div class="tl-desc">The $DOMRUSH token officially launches on <strong>kickstart.easya.io</strong> — a curated Solana launchpad for high-quality Web3 projects. Early supporters can acquire $DOMRUSH tokens to unlock lifetime Premium access. Token-gated features activate immediately on wallet connect with ≥10,000 $DOMRUSH.</div>
+          <div class="tl-desc">The $DOMRUSH token officially launches on <strong>kickstart.easya.io</strong> — a curated Solana launchpad for high-quality Web3 projects. Early supporters can acquire $DOMRUSH tokens to unlock lifetime Premium access. Token-gated features activate immediately on wallet connect with $20 USD worth of $DOMRUSH.</div>
           <div class="tl-features">
             <span class="tl-feat">Token Public Sale</span>
             <span class="tl-feat">Phantom Wallet Connect</span>
-            <span class="tl-feat">Token-Gated Premium</span>
+            <span class="tl-feat">Token-Gated Premium ($20)</span>
             <span class="tl-feat">Jupiter Liquidity Pool</span>
           </div>
         </div>
       </div>
 
-      <!-- WEEK 3 -->
       <div class="tl-item">
         <div class="tl-dot future"></div>
         <div class="tl-date">May 15–21, 2026</div>
@@ -453,7 +496,6 @@ footer a:hover{color:var(--black)}
         </div>
       </div>
 
-      <!-- WEEK 4 -->
       <div class="tl-item">
         <div class="tl-dot future"></div>
         <div class="tl-date">May 22–31, 2026</div>
@@ -470,7 +512,6 @@ footer a:hover{color:var(--black)}
         </div>
       </div>
 
-      <!-- JUNE + -->
       <div class="tl-item">
         <div class="tl-dot future"></div>
         <div class="tl-date">June 2026 & Beyond</div>
@@ -488,9 +529,9 @@ footer a:hover{color:var(--black)}
         </div>
       </div>
 
-    </div><!-- /timeline -->
+    </div>
   </div>
-</div><!-- /page-roadmap -->
+</div>
 
 <!-- ══════════════ PARTNERS PAGE ══════════════ -->
 <div class="page" id="page-partners">
@@ -501,7 +542,6 @@ footer a:hover{color:var(--black)}
       <p class="page-subtitle">DomRush is actively seeking strategic partnerships across domain registrars, AI infrastructure, Web3 platforms, and startup ecosystems. Here are our ideal collaborators.</p>
     </div>
 
-    <!-- DOMAIN & REGISTRAR -->
     <div class="section-divider">
       <div class="sd-line"></div>
       <div class="sd-label">Domain Registrars & DNS</div>
@@ -509,7 +549,6 @@ footer a:hover{color:var(--black)}
     </div>
 
     <div class="partners-grid">
-
       <div class="partner-card">
         <div class="partner-logo-area">
           <div class="partner-icon" style="background:#f0f7ff">🟠</div>
@@ -548,10 +587,8 @@ footer a:hover{color:var(--black)}
         <div class="partner-why">💡 When all AI-generated names are taken, surfacing GoDaddy aftermarket listings keeps users engaged and generates high-value affiliate commissions on premium domain sales.</div>
         <div class="partner-tags"><span class="p-tag">Aftermarket Domains</span><span class="p-tag">Premium Listings</span><span class="p-tag">Auction Integration</span></div>
       </div>
-
     </div>
 
-    <!-- AI & TECH -->
     <div class="section-divider">
       <div class="sd-line"></div>
       <div class="sd-label">AI & Technology Infrastructure</div>
@@ -559,7 +596,6 @@ footer a:hover{color:var(--black)}
     </div>
 
     <div class="partners-grid">
-
       <div class="partner-card">
         <div class="partner-logo-area">
           <div class="partner-icon" style="background:#f5f3ff">🤖</div>
@@ -598,10 +634,8 @@ footer a:hover{color:var(--black)}
         <div class="partner-why">💡 Both DomRush and Supabase target technical founders. A mutual showcase in each other's directories and documentation builds qualified, overlapping audiences.</div>
         <div class="partner-tags"><span class="p-tag">Database Backend</span><span class="p-tag">Auth Integration</span><span class="p-tag">Founder Audience</span></div>
       </div>
-
     </div>
 
-    <!-- WEB3 & SOLANA -->
     <div class="section-divider">
       <div class="sd-line"></div>
       <div class="sd-label">Web3 & Solana Ecosystem</div>
@@ -609,7 +643,6 @@ footer a:hover{color:var(--black)}
     </div>
 
     <div class="partners-grid">
-
       <div class="partner-card">
         <div class="partner-logo-area">
           <div class="partner-icon" style="background:#fdf4ff">💜</div>
@@ -648,10 +681,8 @@ footer a:hover{color:var(--black)}
         <div class="partner-why">💡 EasyA hackathon participants build products and need domain names. A DomRush integration as the official domain tool for EasyA events creates recurring, high-intent usage.</div>
         <div class="partner-tags"><span class="p-tag">Token Launchpad</span><span class="p-tag">Hackathon Partner</span><span class="p-tag">Developer Network</span></div>
       </div>
-
     </div>
 
-    <!-- STARTUP ECOSYSTEM -->
     <div class="section-divider">
       <div class="sd-line"></div>
       <div class="sd-label">Startup Ecosystem & Distribution</div>
@@ -659,7 +690,6 @@ footer a:hover{color:var(--black)}
     </div>
 
     <div class="partners-grid">
-
       <div class="partner-card">
         <div class="partner-logo-area">
           <div class="partner-icon" style="background:#fff7f0">🚀</div>
@@ -737,7 +767,6 @@ footer a:hover{color:var(--black)}
         <div class="partner-why">💡 A "Start Your Newsletter Brand" flow featuring DomRush reaches the creator economy, expanding DomRush's addressable market beyond technical founders into a 50M+ creator audience.</div>
         <div class="partner-tags"><span class="p-tag">Creator Economy</span><span class="p-tag">Newsletter Audience</span><span class="p-tag">Personal Brand</span></div>
       </div>
-
     </div>
 
     <div style="background:var(--black);border-radius:var(--r-2xl);padding:2rem;text-align:center;margin-top:2.5rem">
@@ -753,11 +782,12 @@ footer a:hover{color:var(--black)}
     </div>
 
   </div>
-</div><!-- /page-partners -->
+</div>
 
 <footer>
   <strong style="font-family:'Fraunces',serif;font-weight:400;font-style:italic">DomRush.xyz</strong><br/>
-  Built on Solana · $DOMRUSH · Results are suggestions only<br/>
+  Built on Solana · $DOMRUSH · CA: 5zkDtDGFGUVfZ5un4fF34S6CUHaCvxyiQZy4Nwkoercn<br/>
+  Results are suggestions only<br/>
   <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a> · <a href="https://x.com/domrushxyz" target="_blank">@domrushxyz</a>
 </footer>
 
@@ -770,14 +800,17 @@ footer a:hover{color:var(--black)}
         <button class="modal-close" onclick="closeModal()">✕</button>
         <div class="token-badge"><span class="token-badge-dot"></span>$DOMRUSH · Solana</div>
         <div class="modal-title">Token-gated<br/>Premium Access</div>
-        <div class="modal-sub">Hold $DOMRUSH tokens in your Solana wallet to unlock all premium features — no subscription, no credit card.</div>
+        <div class="modal-sub">Hold $20 USD worth of $DOMRUSH tokens in your Solana wallet to unlock all premium features — no subscription, no credit card.</div>
       </div>
       <div class="modal-body">
         <div class="token-requirement">
           <div class="tr-label">Minimum to hold</div>
           <div class="tr-row">
-            <div><div class="tr-amount">10,000</div><div class="tr-ticker">$DOMRUSH tokens</div></div>
-            <div class="tr-desc">Hold in any Solana wallet. Access verified on connect.</div>
+            <div>
+              <div class="tr-amount">$20</div>
+              <div class="tr-ticker">USD in $DOMRUSH</div>
+            </div>
+            <div class="tr-desc">Hold in any Solana wallet. Value verified at time of connect.</div>
           </div>
         </div>
         <div class="features-grid">
@@ -796,7 +829,11 @@ footer a:hover{color:var(--black)}
           <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
           Sign in with Google (free tier)
         </button>
-        <div class="modal-note">Wallet balance is verified on-chain · No custody · No private keys shared<br/>Don't have $DOMRUSH? <span style="color:#e2b96a;cursor:pointer" onclick="buyToken()">Buy on Jupiter →</span></div>
+        <div class="modal-note">
+          Wallet balance verified on-chain · No custody · No private keys shared<br/>
+          Don't have $DOMRUSH? <span style="color:#e2b96a;cursor:pointer" onclick="buyToken()">Buy on Jupiter →</span><br/>
+          <span style="opacity:0.6;font-size:9.5px">CA: 5zkDtDGFGUVfZ5un4fF34S6CUHaCvxyiQZy4Nwkoercn</span>
+        </div>
       </div>
     </div>
     <div id="modal-account-view" style="display:none">
@@ -828,14 +865,21 @@ footer a:hover{color:var(--black)}
 <div class="toast hidden" id="toast"></div>
 
 <script>
-// ── STATE ──
+const CA = '5zkDtDGFGUVfZ5un4fF34S6CUHaCvxyiQZy4Nwkoercn';
 const API_URL = "https://api.anthropic.com/v1/messages";
 let user = null;
 let isPremium = false;
 let usesLeft = 3;
 let modalMode = 'upgrade';
 
-// ── PAGE NAVIGATION ──
+function copyCA(){
+  navigator.clipboard.writeText(CA).then(()=>{
+    showToast('CA copied to clipboard ✓');
+  }).catch(()=>{
+    showToast('CA: '+CA);
+  });
+}
+
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
@@ -845,7 +889,6 @@ function showPage(name){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-// ── EXAMPLES (varied, 40+) ──
 const EXAMPLES = [
   "AI-powered resume builder for Gen Z",
   "Food delivery app for healthy office meals",
@@ -904,7 +947,6 @@ EXAMPLES.forEach(ex => {
   scroll.appendChild(chip);
 });
 
-// ── PILL TOGGLES ──
 document.querySelectorAll('.pill-group').forEach(g => {
   const single = g.id === 'style-pills';
   g.querySelectorAll('.pill').forEach(p => {
@@ -916,14 +958,12 @@ document.querySelectorAll('.pill-group').forEach(g => {
 });
 function getActive(id){ return [...document.querySelectorAll(`#${id} .pill.active`)].map(p=>p.dataset.val) }
 
-// ── USES COUNTER ──
 function updateUsesBar(){
   if(user){document.getElementById('uses-bar').style.display='none';return;}
   document.getElementById('uses-left').textContent = usesLeft;
   if(usesLeft<=0) document.getElementById('uses-left').style.color='#dc2626';
 }
 
-// ── GENERATE ──
 async function generate(){
   const desc = document.getElementById('product-desc').value.trim();
   if(!desc){document.getElementById('product-desc').focus();showToast('Please describe your product first');return;}
@@ -1042,7 +1082,6 @@ document.getElementById('product-desc').addEventListener('keydown',e=>{
   if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();generate();}
 });
 
-// ── GOOGLE OAUTH ──
 const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com';
 
 function signInWithGoogle(){
@@ -1102,7 +1141,6 @@ function updateUI(){
   }
 }
 
-// ── MODAL ──
 function openPremiumModal(mode='upgrade'){
   modalMode=mode;
   document.getElementById('modal-overlay').classList.remove('hidden');
@@ -1120,7 +1158,6 @@ function openPremiumModal(mode='upgrade'){
 function closeModal(){document.getElementById('modal-overlay').classList.add('hidden');}
 function closeModalIfBg(e){if(e.target===document.getElementById('modal-overlay'))closeModal();}
 
-// ── TOAST ──
 let toastTimer;
 function showToast(msg){
   const t=document.getElementById('toast');
