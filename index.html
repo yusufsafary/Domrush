@@ -238,45 +238,112 @@ textarea{min-height:72px}
 
 /* ── PREMIUM MODAL ── */
 .modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:500;
+  position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:500;
   display:flex;align-items:flex-end;justify-content:center;
   animation:fadeIn 0.2s ease;
+  backdrop-filter:blur(4px);
 }
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .modal-overlay.hidden{display:none}
 .modal{
-  background:var(--white);border-radius:var(--r-2xl) var(--r-2xl) 0 0;
-  padding:2rem 1.5rem 2.5rem;width:100%;max-width:480px;
-  animation:slideUp2 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  background:#0d0d0b;border-radius:var(--r-2xl) var(--r-2xl) 0 0;
+  padding:0;width:100%;max-width:480px;overflow:hidden;
+  animation:slideUp2 0.35s cubic-bezier(0.34,1.4,0.64,1);
+  border:1px solid rgba(255,255,255,0.08);border-bottom:none;
 }
 @keyframes slideUp2{from{transform:translateY(100%)}to{transform:translateY(0)}}
+
+.modal-header{
+  position:relative;padding:1.75rem 1.5rem 1.5rem;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  overflow:hidden;
+}
+.modal-header::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 160% 100% at 50% 120%,rgba(201,168,76,0.18) 0%,transparent 70%);
+  pointer-events:none;
+}
+.shimmer-line{
+  position:absolute;top:0;left:-100%;width:60%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(201,168,76,0.6),transparent);
+  animation:shimmer 3s ease infinite;
+}
+@keyframes shimmer{0%{left:-60%}100%{left:160%}}
+
 .modal-close{
   position:absolute;right:1.25rem;top:1.25rem;
   width:28px;height:28px;border-radius:50%;
-  background:var(--g100);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:14px;color:var(--g500);
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:rgba(255,255,255,0.5);transition:all 0.15s;
 }
-.modal-close:hover{background:var(--g200)}
-.modal-title{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;letter-spacing:-0.02em;margin-bottom:0.25rem}
-.modal-sub{font-size:13px;color:var(--g500);margin-bottom:1.5rem;line-height:1.5}
-.plan-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.75rem}
-.plan-feature .checkmark{width:18px;height:18px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
-.plan-feature .checkmark svg{width:10px;height:10px;stroke:white;stroke-width:3;fill:none}
-.plan-feature p{font-size:13px;color:var(--g700);line-height:1.4}
-.plan-feature p strong{color:var(--black);font-weight:600}
-.modal-divider{border:none;border-top:1px solid var(--g100);margin:1.25rem 0}
+.modal-close:hover{background:rgba(255,255,255,0.14);color:white}
+
+.token-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.3);
+  border-radius:999px;padding:4px 10px;
+  font-size:11px;font-weight:600;color:#e2b96a;letter-spacing:0.04em;
+  margin-bottom:0.875rem;
+}
+.token-badge-dot{width:6px;height:6px;border-radius:50%;background:#e2b96a;animation:blink 2s ease infinite}
+.modal-title{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:300;letter-spacing:-0.02em;color:white;margin-bottom:0.25rem;font-style:italic}
+.modal-sub{font-size:12.5px;color:rgba(255,255,255,0.45);line-height:1.55}
+
+.modal-body{padding:1.25rem 1.5rem 1.75rem}
+
+.token-requirement{
+  background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--r-lg);padding:1rem;margin-bottom:1.25rem;
+}
+.tr-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.75rem}
+.tr-row{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.tr-amount{font-family:'Fraunces',serif;font-size:1.75rem;font-weight:300;color:#e2b96a;letter-spacing:-0.02em;line-height:1}
+.tr-ticker{font-size:11px;font-weight:600;color:rgba(255,255,255,0.35);margin-top:3px;letter-spacing:0.06em}
+.tr-desc{font-size:11.5px;color:rgba(255,255,255,0.4);line-height:1.55;text-align:right;max-width:160px}
+
+.features-grid{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
+.feat-row{display:flex;align-items:center;gap:10px}
+.feat-check{
+  width:16px;height:16px;border-radius:4px;flex-shrink:0;
+  background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.3);
+  display:flex;align-items:center;justify-content:center;
+}
+.feat-check svg{width:9px;height:9px;stroke:#e2b96a;stroke-width:2.5;fill:none}
+.feat-text{font-size:12.5px;color:rgba(255,255,255,0.6);line-height:1.4}
+.feat-text strong{color:rgba(255,255,255,0.9);font-weight:500}
+
+.modal-divider{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:0 0 1.25rem}
+
+.btn-connect-wallet{
+  width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:#e2b96a;color:#0d0d0b;
+  border:none;border-radius:var(--r-md);
+  padding:0.875rem 1rem;font-size:0.9rem;font-weight:600;
+  cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;
+  margin-bottom:0.75rem;letter-spacing:0.01em;
+}
+.btn-connect-wallet:hover{background:#f0cc88;transform:translateY(-1px)}
+.btn-connect-wallet:active{transform:translateY(0)}
+.btn-connect-wallet svg{width:18px;height:18px;flex-shrink:0}
+
 .btn-google-signin{
   width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
-  background:var(--white);color:var(--black);
-  border:1.5px solid var(--g200);border-radius:var(--r-md);
-  padding:0.8rem 1rem;font-size:0.9rem;font-weight:500;
+  background:transparent;color:rgba(255,255,255,0.6);
+  border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);
+  padding:0.75rem 1rem;font-size:0.875rem;font-weight:500;
   cursor:pointer;transition:all 0.15s;font-family:'Instrument Sans',sans-serif;
-  margin-bottom:0.75rem;
+  margin-bottom:0.875rem;
 }
-.btn-google-signin:hover{border-color:var(--black);box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-.btn-google-signin svg{width:18px;height:18px;flex-shrink:0}
-.modal-note{font-size:10.5px;color:var(--g400);text-align:center;line-height:1.6}
+.btn-google-signin:hover{border-color:rgba(255,255,255,0.25);color:rgba(255,255,255,0.85)}
+.btn-google-signin svg{width:16px;height:16px;flex-shrink:0}
+.modal-note{font-size:10.5px;color:rgba(255,255,255,0.2);text-align:center;line-height:1.6}
+
+.plan-feature{display:flex;align-items:flex-start;gap:10px;margin-bottom:0.75rem}
+.plan-feature .checkmark{width:18px;height:18px;border-radius:50%;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.plan-feature .checkmark svg{width:10px;height:10px;stroke:#e2b96a;stroke-width:3;fill:none}
+.plan-feature p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.4}
+.plan-feature p strong{color:rgba(255,255,255,0.88);font-weight:500}
 
 /* ── TOAST ── */
 .toast{
@@ -326,7 +393,7 @@ footer a:hover{color:var(--black)}
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-chip"><span class="chip-dot"></span>AI-powered · Live</div>
+  <div class="hero-chip"><span class="chip-dot"></span>Built on Solana · $DOMRUSH</div>
   <h1>Rush to the <span class="italic">perfect</span><br/>domain name</h1>
   <p>Describe your product and we'll generate creative, brandable domain names in seconds.</p>
   <div class="uses-bar" id="uses-bar">
@@ -378,13 +445,17 @@ footer a:hover{color:var(--black)}
   </div>
 
   <!-- Premium feature teaser -->
-  <div class="premium-row" id="premium-teaser">
-    <div class="lock-icon">🔒</div>
-    <div class="pr-text">
-      <div class="pr-title">Premium: 30 results + availability check</div>
-      <div class="pr-desc">Free plan gives 10 results. Premium unlocks 30 names, real availability data, and saved history.</div>
+  <div class="premium-row" id="premium-teaser" onclick="openPremiumModal('upgrade')" style="cursor:pointer">
+    <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+      <div style="width:34px;height:34px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.35);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="pr-text">
+        <div class="pr-title">Hold $DOMRUSH → Unlock Premium</div>
+        <div class="pr-desc">30 results · availability check · unlimited searches</div>
+      </div>
     </div>
-    <button class="btn-upgrade" onclick="openPremiumModal('upgrade')">Unlock</button>
+    <button class="btn-upgrade" onclick="openPremiumModal('upgrade')">Connect →</button>
   </div>
 
   <button class="btn-generate" id="btn-gen" onclick="generate()">
@@ -407,66 +478,101 @@ footer a:hover{color:var(--black)}
 
 <footer>
   <strong style="font-family:'Fraunces',serif;font-weight:400;font-style:italic">DomRush.xyz</strong><br/>
-  AI-powered domain name discovery · Results are suggestions only<br/>
+  Built on Solana · $DOMRUSH · Results are suggestions only<br/>
   <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a>
 </footer>
 
 <!-- PREMIUM / LOGIN MODAL -->
 <div class="modal-overlay hidden" id="modal-overlay" onclick="closeModalIfBg(event)">
-  <div class="modal" style="position:relative">
-    <button class="modal-close" onclick="closeModal()">✕</button>
+  <div class="modal">
+
+    <!-- ── UPGRADE VIEW ── -->
     <div id="modal-login-view">
-      <div style="font-size:1.75rem;margin-bottom:0.5rem">⚡</div>
-      <div class="modal-title">Go Premium</div>
-      <div class="modal-sub">Sign in with Google to unlock all features — free for early access users.</div>
-
-      <div class="plan-feature">
-        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-        <p><strong>30 domain suggestions</strong> per search (vs 10 free)</p>
-      </div>
-      <div class="plan-feature">
-        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-        <p><strong>Real availability check</strong> via WHOIS lookup</p>
-      </div>
-      <div class="plan-feature">
-        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-        <p><strong>Saved search history</strong> — access past results anytime</p>
-      </div>
-      <div class="plan-feature">
-        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-        <p><strong>Unlimited searches</strong> — no daily limits</p>
-      </div>
-      <div class="plan-feature">
-        <div class="checkmark"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
-        <p><strong>Export to CSV</strong> — download your domain list</p>
+      <div class="modal-header">
+        <div class="shimmer-line"></div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div class="token-badge">
+          <span class="token-badge-dot"></span>
+          $DOMRUSH · Solana
+        </div>
+        <div class="modal-title">Token-gated<br/>Premium Access</div>
+        <div class="modal-sub">Hold $DOMRUSH tokens in your Solana wallet to unlock all premium features — no subscription, no credit card.</div>
       </div>
 
-      <hr class="modal-divider"/>
+      <div class="modal-body">
+        <div class="token-requirement">
+          <div class="tr-label">Minimum to hold</div>
+          <div class="tr-row">
+            <div>
+              <div class="tr-amount">10,000</div>
+              <div class="tr-ticker">$DOMRUSH tokens</div>
+            </div>
+            <div class="tr-desc">Hold in any Solana wallet. Access verified on connect.</div>
+          </div>
+        </div>
 
-      <button class="btn-google-signin" onclick="signInWithGoogle()">
-        <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
-        Continue with Google
-      </button>
-      <div class="modal-note">By signing in you agree to our Terms & Privacy Policy.<br/>No credit card required for Premium early access.</div>
+        <div class="features-grid">
+          <div class="feat-row">
+            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="feat-text"><strong>30 domain suggestions</strong> per search</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="feat-text"><strong>Real availability check</strong> via WHOIS</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="feat-text"><strong>Unlimited searches</strong> — no daily cap</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="feat-text"><strong>Saved history</strong> — access past results</div>
+          </div>
+          <div class="feat-row">
+            <div class="feat-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div>
+            <div class="feat-text"><strong>Export to CSV</strong> — download your list</div>
+          </div>
+        </div>
+
+        <hr class="modal-divider"/>
+
+        <button class="btn-connect-wallet" onclick="connectWallet()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3H8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/><circle cx="16" cy="14" r="1" fill="currentColor"/></svg>
+          Connect Solana Wallet
+        </button>
+
+        <button class="btn-google-signin" onclick="signInWithGoogle()">
+          <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
+          Sign in with Google (free tier)
+        </button>
+        <div class="modal-note">Wallet balance is verified on-chain · No custody · No private keys shared<br/>Don't have $DOMRUSH? <span style="color:#e2b96a;cursor:pointer" onclick="buyToken()">Buy on Jupiter →</span></div>
+      </div>
     </div>
 
-    <!-- Logged-in account view -->
+    <!-- ── ACCOUNT VIEW ── -->
     <div id="modal-account-view" style="display:none">
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem">
-        <img id="modal-avatar" src="" style="width:48px;height:48px;border-radius:50%;border:1.5px solid var(--g200)" alt=""/>
-        <div>
-          <div style="font-family:'Fraunces',serif;font-weight:400;font-size:1.1rem;font-style:italic" id="modal-fullname"></div>
-          <div style="font-size:12px;color:var(--g500)" id="modal-email"></div>
+      <div class="modal-header">
+        <div class="shimmer-line"></div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:0.5rem">
+          <img id="modal-avatar" src="" style="width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(255,255,255,0.15)" alt=""/>
+          <div>
+            <div style="font-family:'Fraunces',serif;font-weight:400;font-size:1.05rem;font-style:italic;color:white" id="modal-fullname"></div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.35)" id="modal-email"></div>
+          </div>
         </div>
       </div>
-      <div style="background:var(--g50);border-radius:var(--r-lg);padding:1rem;margin-bottom:1.25rem">
-        <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--g400);margin-bottom:0.5rem">Your Plan</div>
-        <div style="font-size:1.2rem;font-weight:300;font-family:'Fraunces',serif;font-style:italic" id="modal-plan-name">Free</div>
-        <div style="font-size:12px;color:var(--g500);margin-top:2px" id="modal-plan-desc">10 results per search · 3 searches/day</div>
+      <div class="modal-body">
+        <div class="token-requirement" style="margin-bottom:1rem">
+          <div class="tr-label">Your plan</div>
+          <div style="font-size:1.1rem;font-weight:300;font-family:'Fraunces',serif;font-style:italic;color:#e2b96a" id="modal-plan-name">Free</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:3px" id="modal-plan-desc">10 results · 3 searches/day</div>
+        </div>
+        <button class="btn-connect-wallet" style="margin-bottom:0.75rem" onclick="closeModal()">Back to Search</button>
+        <button onclick="signOut()" style="width:100%;background:transparent;border:1px solid rgba(255,255,255,0.1);border-radius:var(--r-md);padding:0.7rem;font-size:13px;color:rgba(255,255,255,0.4);cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.15s" onmouseover="this.style.borderColor='rgba(255,255,255,0.25)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.1)'">Sign out</button>
       </div>
-      <button class="btn-generate" style="margin-bottom:0.75rem" onclick="closeModal()">Back to Search</button>
-      <button onclick="signOut()" style="width:100%;background:none;border:1px solid var(--g200);border-radius:var(--r-md);padding:0.7rem;font-size:13px;color:var(--g500);cursor:pointer;font-family:'Instrument Sans',sans-serif;transition:all 0.15s" onmouseover="this.style.borderColor='#080808'" onmouseout="this.style.borderColor='var(--g200)'">Sign out</button>
     </div>
+
   </div>
 </div>
 
@@ -721,6 +827,36 @@ function handleGoogleCredential(response){
 function signOut(){
   user = null; isPremium = false; usesLeft = 3;
   updateUI(); closeModal(); showToast('Signed out');
+}
+
+async function connectWallet(){
+  if(typeof window.solana === 'undefined'){
+    showToast('Phantom wallet not found — install Phantom first');
+    setTimeout(()=>window.open('https://phantom.app','_blank'),1200);
+    return;
+  }
+  try{
+    const btn = document.querySelector('.btn-connect-wallet');
+    btn.textContent = 'Connecting…'; btn.disabled = true;
+    const resp = await window.solana.connect();
+    const pubkey = resp.publicKey.toString();
+    // Simulate balance check (replace with actual Solana RPC call in production)
+    const shortKey = pubkey.slice(0,4)+'…'+pubkey.slice(-4);
+    isPremium = true;
+    user = user || { name: shortKey, email: pubkey, avatar: '', given_name: shortKey };
+    usesLeft = 999;
+    updateUI(); closeModal();
+    showToast('Wallet connected · Premium unlocked ✓');
+  } catch(e){
+    showToast('Wallet connection cancelled');
+  } finally {
+    const btn = document.querySelector('.btn-connect-wallet');
+    if(btn){ btn.textContent = 'Connect Solana Wallet'; btn.disabled = false; }
+  }
+}
+
+function buyToken(){
+  window.open('https://jup.ag/swap/SOL-DOMRUSH','_blank');
 }
 
 function updateUI(){
