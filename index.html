@@ -290,6 +290,8 @@ textarea{min-height:72px}
 footer{border-top:1px solid var(--g100);text-align:center;padding:1.5rem 1rem;font-size:11px;color:var(--g400);line-height:1.9}
 footer a{color:var(--g500);text-decoration:none}
 footer a:hover{color:var(--black)}
+.orynth-footer-badge{display:inline-flex;justify-content:center;margin:10px 0 4px}
+.orynth-footer-badge img{height:40px;width:auto;display:block}
 
 @media(max-width:520px){
   .grid2{grid-template-columns:1fr}
@@ -338,6 +340,10 @@ footer a:hover{color:var(--black)}
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       @domrushxyz
     </a>
+    <a class="btn-x" href="https://x.com/0xsixtina" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      @0xsixtina
+    </a>
     <div id="nav-auth">
       <button class="btn-login" onclick="openModal('login')">
         <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
@@ -365,11 +371,11 @@ footer a:hover{color:var(--black)}
     <!-- BETA BANNER -->
     <div class="beta-banner">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg>
-      <span>Beta mode — menggunakan mock data sementara AI terhubung</span>
+      <span>Beta mode — using mock data while AI connects</span>
     </div>
 
     <div class="uses-bar" id="uses-bar">
-      <strong id="uses-left">3</strong>&nbsp;free searches tersisa hari ini &nbsp;·&nbsp;
+      <strong id="uses-left">3</strong>&nbsp;free searches left today &nbsp;·&nbsp;
       <span class="upgrade-link" onclick="openModal('login')">Go Premium →</span>
     </div>
   </div>
@@ -382,8 +388,8 @@ footer a:hover{color:var(--black)}
 
   <!-- SEARCH CARD -->
   <div class="search-card" style="padding:1.375rem">
-    <label class="field-label" for="pdesc">Deskripsikan produk atau ide kamu</label>
-    <textarea id="pdesc" placeholder="e.g. SaaS tool untuk membantu brand e-commerce mengotomatiskan customer support dengan AI chatbot…" rows="3"></textarea>
+    <label class="field-label" for="pdesc">Describe your product or idea</label>
+    <textarea id="pdesc" placeholder="e.g. SaaS tool to help e-commerce brands automate customer support with an AI chatbot…" rows="3"></textarea>
 
     <div class="grid2">
       <div>
@@ -423,7 +429,7 @@ footer a:hover{color:var(--black)}
       </div>
       <div class="token-text">
         <div class="t1">Hold $DOMRUSH ($20 USD) → Unlock Premium</div>
-        <div class="t2">30 hasil · cek ketersediaan · pencarian tak terbatas</div>
+        <div class="t2">30 results · availability check · unlimited searches</div>
       </div>
       <button class="btn-connect" onclick="event.stopPropagation();openModal('login')">Connect →</button>
     </div>
@@ -457,25 +463,25 @@ footer a:hover{color:var(--black)}
   <div class="page-wrap">
     <div class="page-header">
       <div class="page-eyebrow">Product Roadmap</div>
-      <h2 class="page-title">Membangun <em>masa depan</em><br/>penamaan domain</h2>
-      <p class="page-sub">Dari beta launch ke ekosistem penuh — mulai Mei 2026.</p>
+      <h2 class="page-title">Building the <em>future</em><br/>of domain naming</h2>
+      <p class="page-sub">From beta launch to full ecosystem — starting May 2026.</p>
     </div>
 
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-num">Mei</div><div class="stat-label">2026 Launch</div></div>
+      <div class="stat-card"><div class="stat-num">May</div><div class="stat-label">2026 Launch</div></div>
       <div class="stat-card"><div class="stat-num">$DOMRUSH</div><div class="stat-label">Live on Solana</div></div>
-      <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label">AI Saran/Search</div></div>
+      <div class="stat-card"><div class="stat-num">30+</div><div class="stat-label">AI Suggestions/Search</div></div>
     </div>
 
     <div class="timeline">
 
       <div class="tl-item">
         <div class="tl-dot active"></div>
-        <div class="tl-date">1–7 Mei 2026</div>
+        <div class="tl-date">1–7 May 2026</div>
         <div class="tl-card highlight">
-          <span class="tl-tag live">✦ Live Sekarang</span>
+          <span class="tl-tag live">✦ Live Now</span>
           <div class="tl-title">Website Beta Launch</div>
-          <div class="tl-desc">DomRush.xyz live dengan AI domain generator. Free tier 3 pencarian/hari, 10 hasil per query. Google Sign-In, filter style, TLD, dan keyword hints.</div>
+          <div class="tl-desc">DomRush.xyz live with AI domain generator. Free tier: 3 searches/day, 10 results per query. Google Sign-In, style filters, TLD filters, and keyword hints.</div>
           <div class="tl-feats">
             <span class="tl-feat">AI Domain Generator</span>
             <span class="tl-feat">Google OAuth</span>
@@ -488,11 +494,11 @@ footer a:hover{color:var(--black)}
 
       <div class="tl-item">
         <div class="tl-dot gold"></div>
-        <div class="tl-date">8–14 Mei 2026</div>
+        <div class="tl-date">8–14 May 2026</div>
         <div class="tl-card highlight">
           <span class="tl-tag live">⚡ Launching</span>
-          <div class="tl-title">$DOMRUSH Token Market di EasyA Kickstart</div>
-          <div class="tl-desc">Token $DOMRUSH resmi launch di <strong>kickstart.easya.io</strong>. Hold $20 USD untuk unlock lifetime Premium. Token-gated features aktif langsung saat wallet connect via Phantom.</div>
+          <div class="tl-title">$DOMRUSH Token Market on EasyA Kickstart</div>
+          <div class="tl-desc">$DOMRUSH token officially launches on <strong>kickstart.easya.io</strong>. Hold $20 USD to unlock lifetime Premium. Token-gated features activate immediately upon wallet connection via Phantom.</div>
           <div class="tl-feats">
             <span class="tl-feat">Token Public Sale</span>
             <span class="tl-feat">Phantom Wallet Connect</span>
@@ -504,14 +510,14 @@ footer a:hover{color:var(--black)}
 
       <div class="tl-item">
         <div class="tl-dot future"></div>
-        <div class="tl-date">15–21 Mei 2026</div>
+        <div class="tl-date">15–21 May 2026</div>
         <div class="tl-card upcoming">
           <span class="tl-tag soon">Coming Soon</span>
           <div class="tl-title">Full Feature Integration</div>
-          <div class="tl-desc">Premium users dapat suite lengkap: WHOIS availability real-time, 30 hasil/pencarian, history, koleksi tersimpan, ekspor CSV, dan algoritma lebih cerdas.</div>
+          <div class="tl-desc">Premium users get the full suite: real-time WHOIS availability, 30 results/search, history, saved collections, CSV export, and a smarter generation algorithm.</div>
           <div class="tl-feats">
             <span class="tl-feat">WHOIS Availability</span>
-            <span class="tl-feat">30 Hasil/Search</span>
+            <span class="tl-feat">30 Results/Search</span>
             <span class="tl-feat">Search History</span>
             <span class="tl-feat">CSV Export</span>
             <span class="tl-feat">Saved Collections</span>
@@ -522,11 +528,11 @@ footer a:hover{color:var(--black)}
 
       <div class="tl-item">
         <div class="tl-dot future"></div>
-        <div class="tl-date">22–31 Mei 2026</div>
+        <div class="tl-date">22–31 May 2026</div>
         <div class="tl-card upcoming">
           <span class="tl-tag soon">Coming Soon</span>
-          <div class="tl-title">Kemitraan Strategis & Pertumbuhan Ekosistem</div>
-          <div class="tl-desc">Integrasi resmi dengan registrar domain, DNS providers, dan platform Web3. Affiliate dengan Namecheap dan Cloudflare. Referral program untuk holder $DOMRUSH.</div>
+          <div class="tl-title">Strategic Partnerships & Ecosystem Growth</div>
+          <div class="tl-desc">Official integrations with domain registrars, DNS providers, and Web3 platforms. Affiliate deals with Namecheap and Cloudflare. Referral program for $DOMRUSH holders.</div>
           <div class="tl-feats">
             <span class="tl-feat">Registrar Affiliates</span>
             <span class="tl-feat">Referral Program</span>
@@ -538,11 +544,11 @@ footer a:hover{color:var(--black)}
 
       <div class="tl-item">
         <div class="tl-dot future"></div>
-        <div class="tl-date">Juni 2026 & Seterusnya</div>
+        <div class="tl-date">June 2026 & Beyond</div>
         <div class="tl-card">
           <span class="tl-tag planned">Planned</span>
-          <div class="tl-title">Platform Expansion & API Publik</div>
-          <div class="tl-desc">API publik, PWA mobile, multi-bahasa, integrasi lelang domain, dan brand kit generator (logo + palet warna + domain bundle).</div>
+          <div class="tl-title">Platform Expansion & Public API</div>
+          <div class="tl-desc">Public API, mobile PWA, multi-language support, domain auction integration, and brand kit generator (logo + color palette + domain bundle).</div>
           <div class="tl-feats">
             <span class="tl-feat">Public API</span>
             <span class="tl-feat">Mobile PWA</span>
@@ -561,105 +567,105 @@ footer a:hover{color:var(--black)}
 <div class="page" id="page-partners">
   <div class="page-wrap">
     <div class="page-header">
-      <div class="page-eyebrow">Potensi Kemitraan</div>
-      <h2 class="page-title">Perusahaan yang ingin kami <em>ajak</em> kolaborasi</h2>
-      <p class="page-sub">DomRush aktif mencari kemitraan strategis di bidang registrar domain, AI, Web3, dan ekosistem startup.</p>
+      <div class="page-eyebrow">Potential Partnerships</div>
+      <h2 class="page-title">Companies we want to <em>partner</em> with</h2>
+      <p class="page-sub">DomRush is actively seeking strategic partnerships in domain registrars, AI, Web3, and the startup ecosystem.</p>
     </div>
 
-    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Registrar Domain & DNS</div><div class="sd-line"></div></div>
+    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Domain Registrars & DNS</div><div class="sd-line"></div></div>
     <div class="partners-grid">
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🟠</div><div><div class="partner-name">Namecheap</div><div class="partner-type">Domain Registrar · Affiliate</div></div></div>
-        <p class="partner-desc">Registrar domain terbesar ke-2 dunia dengan 18M+ domain. API dan program affiliate Namecheap menjadikannya mitra checkout ideal untuk hasil DomRush.</p>
-        <div class="partner-why">💡 Tombol "Check Availability" sudah menuju Namecheap — formalisasi ke deal affiliate menciptakan revenue dan alur mulus dari ide ke pembelian.</div>
+        <p class="partner-desc">The world's 2nd largest domain registrar with 18M+ domains. Namecheap's API and affiliate program make it the ideal checkout partner for DomRush results.</p>
+        <div class="partner-why">💡 The "Check Availability" button already points to Namecheap — formalizing an affiliate deal creates revenue and a seamless flow from idea to purchase.</div>
         <div class="partner-tags"><span class="p-tag">Affiliate Rev-Share</span><span class="p-tag">API Integration</span><span class="p-tag">Co-marketing</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🌐</div><div><div class="partner-name">Cloudflare</div><div class="partner-type">DNS · Registrar · CDN</div></div></div>
-        <p class="partner-desc">Registrar Cloudflare menawarkan domain dengan harga cost tanpa markup — nilai jual besar untuk founder yang hemat budget dan target audience DomRush.</p>
-        <div class="partner-why">💡 Integrasi API Registrar Cloudflare menampilkan harga asli di samping setiap saran, membedakan DomRush dari kompetitor yang tampilkan harga inflasi.</div>
+        <p class="partner-desc">Cloudflare Registrar offers domains at cost with no markup — a major selling point for budget-conscious founders and DomRush's target audience.</p>
+        <div class="partner-why">💡 Integrating Cloudflare Registrar's API to display real prices alongside every suggestion differentiates DomRush from competitors showing inflated prices.</div>
         <div class="partner-tags"><span class="p-tag">Price Transparency</span><span class="p-tag">DNS API</span><span class="p-tag">Startup Audience</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🔵</div><div><div class="partner-name">GoDaddy</div><div class="partner-type">Domain Registrar · Marketplace</div></div></div>
-        <p class="partner-desc">Marketplace aftermarket GoDaddy menampung jutaan domain expired dan premium. Integrasi DomRush × GoDaddy bisa tampilkan alternatif domain premium.</p>
-        <div class="partner-why">💡 Ketika semua nama AI-generated sudah diambil, menampilkan listing aftermarket GoDaddy tetap membuat user engaged dan menghasilkan komisi tinggi.</div>
+        <p class="partner-desc">GoDaddy's aftermarket marketplace hosts millions of expired and premium domains. A DomRush × GoDaddy integration can surface premium domain alternatives.</p>
+        <div class="partner-why">💡 When all AI-generated names are taken, showing GoDaddy aftermarket listings keeps users engaged and generates high-value commissions.</div>
         <div class="partner-tags"><span class="p-tag">Aftermarket Domains</span><span class="p-tag">Premium Listings</span><span class="p-tag">Auction Integration</span></div>
       </div>
     </div>
 
-    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">AI & Infrastruktur Teknologi</div><div class="sd-line"></div></div>
+    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">AI & Technology Infrastructure</div><div class="sd-line"></div></div>
     <div class="partners-grid">
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🤖</div><div><div class="partner-name">Anthropic</div><div class="partner-type">AI Foundation Model</div></div></div>
-        <p class="partner-desc">Model Claude dari Anthropic tenagai engine generasi domain DomRush. Kemitraan lebih dalam bisa mencakup API credits, akses model awal, dan co-marketing.</p>
-        <div class="partner-why">💡 DomRush adalah showcase kemampuan Claude untuk naming kreatif — ideal untuk program "built with Claude" dan success story developer Anthropic.</div>
+        <p class="partner-desc">Anthropic's Claude powers DomRush's domain generation engine. A deeper partnership could include API credits, early model access, and co-marketing opportunities.</p>
+        <div class="partner-why">💡 DomRush showcases Claude's creative naming capabilities — ideal for Anthropic's "built with Claude" program and developer success stories.</div>
         <div class="partner-tags"><span class="p-tag">API Credits Program</span><span class="p-tag">Showcase Partner</span><span class="p-tag">Early Access</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">⚡</div><div><div class="partner-name">Vercel</div><div class="partner-type">Cloud Deployment · Edge</div></div></div>
-        <p class="partner-desc">Vercel menjalankan web app tercepat dengan edge deployment. Sebagai platform hosting DomRush, kemitraan membuka API routes lebih cepat dan diskon startup program.</p>
-        <div class="partner-why">💡 Ethos "Ship faster" Vercel cocok dengan brand DomRush. Kampanye co-branded "Dari ide ke domain live dalam 60 detik" akan beresonansi kuat.</div>
+        <p class="partner-desc">Vercel powers the fastest web apps with edge deployment. As DomRush's hosting platform, a partnership unlocks faster API routes and startup program discounts.</p>
+        <div class="partner-why">💡 Vercel's "Ship faster" ethos aligns with DomRush's brand. A co-branded "From idea to live domain in 60 seconds" campaign would resonate strongly.</div>
         <div class="partner-tags"><span class="p-tag">Startup Program</span><span class="p-tag">Edge Functions</span><span class="p-tag">Co-branding</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🔴</div><div><div class="partner-name">Supabase</div><div class="partner-type">Backend-as-a-Service</div></div></div>
-        <p class="partner-desc">Alternatif Firebase open-source untuk backend DomRush — menyimpan search history, akun user, dan verifikasi premium dengan stack developer-friendly.</p>
-        <div class="partner-why">💡 DomRush dan Supabase sama-sama menarget technical founders. Mutual showcase di direktori masing-masing membangun audience yang saling overlap.</div>
+        <p class="partner-desc">Open-source Firebase alternative for DomRush's backend — storing search history, user accounts, and premium verification with a developer-friendly stack.</p>
+        <div class="partner-why">💡 DomRush and Supabase both target technical founders. Mutual showcasing in each other's directories builds a highly overlapping audience.</div>
         <div class="partner-tags"><span class="p-tag">Database Backend</span><span class="p-tag">Auth Integration</span><span class="p-tag">Founder Audience</span></div>
       </div>
     </div>
 
-    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Web3 & Ekosistem Solana</div><div class="sd-line"></div></div>
+    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Web3 & Solana Ecosystem</div><div class="sd-line"></div></div>
     <div class="partners-grid">
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">💜</div><div><div class="partner-name">Phantom</div><div class="partner-type">Solana Wallet · Web3 Auth</div></div></div>
-        <p class="partner-desc">Wallet Solana terdepan dengan 10M+ pengguna. Sistem Premium token-gated DomRush sudah integrasikan Phantom untuk koneksi wallet dan verifikasi saldo $DOMRUSH.</p>
-        <div class="partner-why">💡 Promosi co-marketing Phantom × DomRush mengekspos DomRush ke jutaan pengguna Solana aktif yang prime candidates untuk produk Web3-native.</div>
+        <p class="partner-desc">The leading Solana wallet with 10M+ users. DomRush's token-gated Premium system already integrates Phantom for wallet connection and $DOMRUSH balance verification.</p>
+        <div class="partner-why">💡 A Phantom × DomRush co-marketing campaign exposes DomRush to millions of active Solana users who are prime candidates for Web3-native products.</div>
         <div class="partner-tags"><span class="p-tag">Wallet Integration</span><span class="p-tag">User Promotion</span><span class="p-tag">Token Verification</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🟢</div><div><div class="partner-name">Jupiter Exchange</div><div class="partner-type">Solana DEX Aggregator</div></div></div>
-        <p class="partner-desc">DEX aggregator terbesar Solana, merutekan trading token $DOMRUSH dengan likuiditas terbaik. DomRush sudah mengarahkan user ke Jupiter untuk beli token.</p>
-        <div class="partner-why">💡 Tampil di "New Token Spotlight" Jupiter mendorong permintaan token organik, mendukung adopsi Premium tanpa iklan berbayar.</div>
+        <p class="partner-desc">Solana's largest DEX aggregator, routing $DOMRUSH token trades with the best liquidity. DomRush already directs users to Jupiter to purchase the token.</p>
+        <div class="partner-why">💡 Featuring in Jupiter's "New Token Spotlight" drives organic token demand, supporting Premium adoption without paid advertising.</div>
         <div class="partner-tags"><span class="p-tag">Token Liquidity</span><span class="p-tag">Ecosystem Listing</span><span class="p-tag">Co-marketing</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🟡</div><div><div class="partner-name">EasyA</div><div class="partner-type">Web3 Launchpad · Education</div></div></div>
-        <p class="partner-desc">EasyA Kickstart host token sale $DOMRUSH. Komunitas 500K+ developer dan jaringan hackathon universitas EasyA adalah saluran distribusi utama untuk DomRush.</p>
-        <div class="partner-why">💡 Peserta hackathon EasyA membangun produk dan butuh domain name — integrasi DomRush sebagai tool domain resmi menciptakan penggunaan berulang.</div>
+        <p class="partner-desc">EasyA hosts the $DOMRUSH token sale. EasyA's 500K+ developer community and university hackathon network are a primary distribution channel for DomRush.</p>
+        <div class="partner-why">💡 EasyA hackathon participants build products and need domain names — integrating DomRush as the official domain tool creates recurring usage.</div>
         <div class="partner-tags"><span class="p-tag">Token Launchpad</span><span class="p-tag">Hackathon Partner</span><span class="p-tag">Developer Network</span></div>
       </div>
     </div>
 
-    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Ekosistem Startup & Distribusi</div><div class="sd-line"></div></div>
+    <div class="section-divider"><div class="sd-line"></div><div class="sd-label">Startup Ecosystem & Distribution</div><div class="sd-line"></div></div>
     <div class="partners-grid">
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🚀</div><div><div class="partner-name">Product Hunt</div><div class="partner-type">Product Discovery Platform</div></div></div>
-        <p class="partner-desc">Setiap Product Hunt launch butuh domain name. Banner DomRush di homepage PH saat launch menciptakan eksposur high-intent yang sangat tepat waktu.</p>
-        <div class="partner-why">💡 Penempatan kontekstual di momen founder paling butuh domain adalah strategi yang sangat efisien dibanding iklan generik.</div>
+        <p class="partner-desc">Every Product Hunt launch needs a domain name. A DomRush banner on PH's homepage during launch creates highly timely, high-intent exposure.</p>
+        <div class="partner-why">💡 Contextual placement at the exact moment founders need a domain is far more efficient than generic advertising.</div>
         <div class="partner-tags"><span class="p-tag">Launch Platform</span><span class="p-tag">Contextual Placement</span><span class="p-tag">Maker Community</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🦁</div><div><div class="partner-name">Notion</div><div class="partner-type">Productivity · Startup OS</div></div></div>
-        <p class="partner-desc">Template gallery Notion menjangkau jutaan tim startup. Bundle "Launch Your Startup" featuring DomRush menempatkan kami di tangan founder tepat saat mereka butuh domain.</p>
-        <div class="partner-why">💡 Widget DomRush di Notion memungkinkan founder generate ide domain tanpa meninggalkan workspace planning mereka.</div>
+        <p class="partner-desc">Notion's template gallery reaches millions of startup teams. A "Launch Your Startup" bundle featuring DomRush puts us in founders' hands exactly when they need a domain.</p>
+        <div class="partner-why">💡 A DomRush widget inside Notion lets founders generate domain ideas without leaving their planning workspace.</div>
         <div class="partner-tags"><span class="p-tag">Template Integration</span><span class="p-tag">Embedded Widget</span><span class="p-tag">5M+ Users</span></div>
       </div>
       <div class="partner-card">
         <div class="partner-header"><div class="partner-icon">🌊</div><div><div class="partner-name">Framer / Webflow</div><div class="partner-type">No-Code Website Builders</div></div></div>
-        <p class="partner-desc">Platform yang membutuhkan custom domain saat setup — integrasi DomRush di langkah "Connect Domain" berarti user bisa generate dan beli domain tanpa keluar builder.</p>
-        <div class="partner-why">💡 Domain setup adalah friction point di setiap website builder onboarding. DomRush mengubah friction itu menjadi pengalaman AI yang menyenangkan.</div>
+        <p class="partner-desc">Platforms that require a custom domain at setup — integrating DomRush into the "Connect Domain" step means users can generate and buy a domain without leaving the builder.</p>
+        <div class="partner-why">💡 Domain setup is a friction point in every website builder onboarding. DomRush turns that friction into a delightful AI-powered experience.</div>
         <div class="partner-tags"><span class="p-tag">Onboarding Integration</span><span class="p-tag">No-Code Audience</span><span class="p-tag">White-label API</span></div>
       </div>
     </div>
 
     <div class="contact-cta">
-      <div class="c-sub">Tertarik bermitra?</div>
-      <div class="c-title">Mari bangun bersama</div>
-      <div class="c-desc">DomRush terbuka untuk integrasi registrar, co-marketing, API deals, dan kemitraan ekosistem.</div>
+      <div class="c-sub">Interested in partnering?</div>
+      <div class="c-title">Let's build together</div>
+      <div class="c-desc">DomRush is open to registrar integrations, co-marketing, API deals, and ecosystem partnerships.</div>
       <a href="mailto:hello@domrush.xyz" class="btn-contact">hello@domrush.xyz →</a>
-      <a href="https://x.com/domrushxyz" target="_blank" rel="noopener" class="contact-x">Atau DM kami di X @domrushxyz</a>
+      <a href="https://x.com/domrushxyz" target="_blank" rel="noopener" class="contact-x">Or DM us on X @domrushxyz</a>
     </div>
   </div>
 </div>
@@ -667,8 +673,9 @@ footer a:hover{color:var(--black)}
 <footer>
   <strong style="font-family:'Fraunces',serif;font-weight:400;font-style:italic">DomRush.xyz</strong><br/>
   Built on Solana · $DOMRUSH · CA: 5zkDtDGFGUVfZ5un4fF34S6CUHaCvxyiQZy4Nwkoercn<br/>
-  Hasil adalah saran saja — verifikasi ketersediaan sebelum membeli<br/>
-  <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Kontak</a> · <a href="https://x.com/domrushxyz" target="_blank">@domrushxyz</a>
+  Results are suggestions only — verify availability before purchasing<br/>
+  <a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="mailto:hello@domrush.xyz">Contact</a> · <a href="https://x.com/domrushxyz" target="_blank">@domrushxyz</a><br/>
+  <div class="orynth-footer-badge"><a href="https://orynth.dev/projects/domrush" target="_blank" rel="noopener"><img src="https://orynth.dev/api/badge/domrush?theme=light&style=default" alt="Featured on Orynth" width="260" height="80" /></a></div>
 </footer>
 
 <!-- PREMIUM / LOGIN MODAL -->
@@ -681,21 +688,21 @@ footer a:hover{color:var(--black)}
         <div class="shimmer"></div>
         <button class="modal-close" onclick="closeModal()">✕</button>
         <div class="m-chip"><span class="m-chip-dot"></span>$DOMRUSH · Solana</div>
-        <div class="modal-title">Akses Premium<br/>berbasis Token</div>
-        <div class="modal-sub">Hold $20 USD worth of $DOMRUSH di Solana wallet kamu untuk unlock semua fitur premium — tanpa langganan, tanpa kartu kredit.</div>
+        <div class="modal-title">Token-Based<br/>Premium Access</div>
+        <div class="modal-sub">Hold $20 USD worth of $DOMRUSH in your Solana wallet to unlock all premium features — no subscription, no credit card.</div>
       </div>
       <div class="modal-body">
         <div class="m-req">
-          <div class="m-req-label">Minimum yang harus dipegang</div>
+          <div class="m-req-label">Minimum to hold</div>
           <div class="m-req-amount">$20</div>
-          <div class="m-req-sub">USD dalam $DOMRUSH · diverifikasi on-chain saat koneksi</div>
+          <div class="m-req-sub">USD in $DOMRUSH · verified on-chain at connection</div>
         </div>
         <div class="m-feats">
-          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>30 saran domain</strong> per pencarian</div></div>
-          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Cek ketersediaan real-time</strong> via WHOIS</div></div>
-          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Pencarian tak terbatas</strong> — tanpa batas harian</div></div>
-          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Riwayat tersimpan</strong> — akses hasil sebelumnya</div></div>
-          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Ekspor CSV</strong> — download daftar domainmu</div></div>
+          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>30 domain suggestions</strong> per search</div></div>
+          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Real-time availability check</strong> via WHOIS</div></div>
+          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Unlimited searches</strong> — no daily cap</div></div>
+          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>Saved history</strong> — access previous results</div></div>
+          <div class="m-feat"><div class="m-check"><svg viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2"/></svg></div><div class="m-feat-text"><strong>CSV export</strong> — download your domain list</div></div>
         </div>
         <hr class="modal-div"/>
         <button class="btn-wallet" onclick="connectWallet()">
@@ -704,11 +711,11 @@ footer a:hover{color:var(--black)}
         </button>
         <button class="btn-google" onclick="signInGoogle()">
           <svg viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.33 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.67 14.62 48 24 48z"/></svg>
-          Sign in dengan Google (free tier)
+          Sign in with Google (free tier)
         </button>
         <div class="m-note">
-          Saldo diverifikasi on-chain · Tanpa custody · Kunci privat tidak dibagikan<br/>
-          Belum punya $DOMRUSH? <span class="buy-link" onclick="buyToken()">Beli di Jupiter →</span><br/>
+          Balance verified on-chain · Non-custodial · Private keys never shared<br/>
+          Don't have $DOMRUSH? <span class="buy-link" onclick="buyToken()">Buy on Jupiter →</span><br/>
           <span class="m-ca">CA: 5zkDtDGFGUVfZ5un4fF34S6CUHaCvxyiQZy4Nwkoercn</span>
         </div>
       </div>
@@ -729,11 +736,11 @@ footer a:hover{color:var(--black)}
       </div>
       <div class="modal-body">
         <div class="m-req" style="margin-bottom:1rem">
-          <div class="m-req-label">Plan kamu</div>
+          <div class="m-req-label">Your plan</div>
           <div style="font-size:1.1rem;font-weight:300;font-family:'Fraunces',serif;font-style:italic;color:#e2b96a" id="m-plan-name">Free</div>
-          <div style="font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:3px" id="m-plan-desc">10 hasil · 3 pencarian/hari</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.35);margin-top:3px" id="m-plan-desc">10 results · 3 searches/day</div>
         </div>
-        <button class="btn-back" onclick="closeModal()">Kembali ke Pencarian</button>
+        <button class="btn-back" onclick="closeModal()">Back to Search</button>
         <button class="btn-signout" onclick="signOut()">Sign out</button>
       </div>
     </div>
@@ -750,36 +757,36 @@ let user = null, isPremium = false, usesLeft = 3;
 
 /* ── MOCK DATA ── */
 const MOCK_DOMAINS = [
-  {name:'chatdesk',ext:'.io',why:'Bersih dan langsung — langsung menyampaikan SaaS customer support.',tags:['creative']},
-  {name:'replai',ext:'.com',why:'Portmanteau cerdas antara "reply" dan "AI" — mudah diingat.',tags:['creative','short']},
-  {name:'botflow',ext:'.co',why:'Mengalir enak diucapkan; evokasi otomasi dan operasi yang lancar.',tags:[]},
-  {name:'helphive',ext:'.io',why:'Imagery kolaboratif cocok untuk support teams; pendek dan bertenaga.',tags:['short']},
-  {name:'zendeck',ext:'.com',why:'Zen feeling + deck sebagai workspace — produktivitas tenang untuk support.',tags:[]},
-  {name:'supportly',ext:'.ai',why:'Sufiks "-ly" membuatnya terasa seperti produk SaaS yang ramah.',tags:[]},
-  {name:'aidesk',ext:'.io',why:'Kombinasi AI + desk yang lugas — mudah diketik dan diingat.',tags:['short']},
-  {name:'replybird',ext:'.com',why:'Burung cepat dan gesit — metafora tepat untuk balasan support.',tags:['creative']},
-  {name:'chatpilot',ext:'.ai',why:'Memposisikan produk sebagai pemandu ahli di percakapan pelanggan.',tags:[]},
-  {name:'botsuite',ext:'.co',why:'Nama enterprise-friendly yang menyiratkan suite produk lengkap.',tags:[]},
-  {name:'valyve',ext:'.io',why:'Kata invented abstrak; ejaan unik memberi potensi trademark kuat.',tags:['creative']},
-  {name:'nudgr',ext:'.com',why:'Playful dan startup-coded; sempurna untuk automated follow-up flows.',tags:['short','hot']},
-  {name:'loopdesk',ext:'.io',why:'Menyiratkan feedback loop terus-menerus — kuat untuk B2B SaaS.',tags:[]},
-  {name:'wispai',ext:'.com',why:'Whisper + AI — cepat, senyap, otomasi yang selalu aktif.',tags:['short','creative']},
-  {name:'flowreply',ext:'.io',why:'Berorientasi aksi; gambaran komunikasi pelanggan yang effortless.',tags:[]},
+  {name:'chatdesk',ext:'.io',why:'Clean and direct — immediately conveys SaaS customer support.',tags:['creative']},
+  {name:'replai',ext:'.com',why:'Smart portmanteau of "reply" and "AI" — highly memorable.',tags:['creative','short']},
+  {name:'botflow',ext:'.co',why:'Flows well when spoken; evokes automation and smooth operations.',tags:[]},
+  {name:'helphive',ext:'.io',why:'Collaborative imagery fits support teams; short and punchy.',tags:['short']},
+  {name:'zendeck',ext:'.com',why:'Zen feeling + deck as a workspace — calm productivity for support.',tags:[]},
+  {name:'supportly',ext:'.ai',why:'The "-ly" suffix makes it feel like a friendly SaaS product.',tags:[]},
+  {name:'aidesk',ext:'.io',why:'Clean AI + desk combo — easy to type and remember.',tags:['short']},
+  {name:'replybird',ext:'.com',why:'Fast, agile bird — a perfect metaphor for quick support replies.',tags:['creative']},
+  {name:'chatpilot',ext:'.ai',why:'Positions the product as an expert guide in customer conversations.',tags:[]},
+  {name:'botsuite',ext:'.co',why:'Enterprise-friendly name implying a full product suite.',tags:[]},
+  {name:'valyve',ext:'.io',why:'Abstract invented word; unique spelling gives strong trademark potential.',tags:['creative']},
+  {name:'nudgr',ext:'.com',why:'Playful and startup-coded; perfect for automated follow-up flows.',tags:['short','hot']},
+  {name:'loopdesk',ext:'.io',why:'Implies a continuous feedback loop — strong for B2B SaaS.',tags:[]},
+  {name:'wispai',ext:'.com',why:'Whisper + AI — fast, silent, always-on automation.',tags:['short','creative']},
+  {name:'flowreply',ext:'.io',why:'Action-oriented; paints a picture of effortless customer communication.',tags:[]},
 ];
 
 const EXAMPLES = [
-  'AI-powered resume builder untuk Gen Z',
-  'Aplikasi delivery makanan sehat untuk kantor',
-  'SaaS tracker invoice untuk freelancer',
-  'Marketplace online untuk kerajinan tangan',
-  'Aplikasi coaching fitness dengan trainer live',
-  'Generator dokumen legal untuk startup',
-  'Budgeting pintar untuk mahasiswa',
-  'Crypto portfolio tracker dengan analitik DeFi',
-  'Jurnal kesehatan mental dengan AI prompt',
-  'Website builder no-code untuk restoran',
-  'Penjadwal media sosial untuk kreator konten',
-  'Aplikasi manajemen proyek untuk agensi remote',
+  'AI-powered resume builder for Gen Z',
+  'Healthy food delivery app for offices',
+  'SaaS invoice tracker for freelancers',
+  'Online marketplace for handmade crafts',
+  'Fitness coaching app with live trainers',
+  'Legal document generator for startups',
+  'Smart budgeting for college students',
+  'Crypto portfolio tracker with DeFi analytics',
+  'Mental health journal with AI prompts',
+  'No-code website builder for restaurants',
+  'Social media scheduler for content creators',
+  'Project management app for remote agencies',
 ];
 
 /* ── INIT EXAMPLES ── */
@@ -908,7 +915,7 @@ function openModal(mode) {
     document.getElementById('m-fullname').textContent = user.name;
     document.getElementById('m-email').textContent = user.email;
     document.getElementById('m-plan-name').textContent = isPremium ? 'Premium ⚡' : 'Free';
-    document.getElementById('m-plan-desc').textContent = isPremium ? '30 hasil · Pencarian tak terbatas' : '10 hasil · 3 pencarian/hari';
+    document.getElementById('m-plan-desc').textContent = isPremium ? '30 results · Unlimited searches' : '10 results · 3 searches/day';
   } else {
     document.getElementById('view-login').style.display = '';
     document.getElementById('view-account').style.display = 'none';
